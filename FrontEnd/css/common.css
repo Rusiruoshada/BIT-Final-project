@@ -1,0 +1,72 @@
+:root {
+	--sidebar-color: rgb(81, 0, 131);
+	--bg-primary-hover-nav: rgba(74, 90, 78, 0.23);
+	--bg-primary: #0d4365;
+    --bg-primary-hover: #0b4f7a;
+}
+
+.primary-color {
+	background-color: var(--bg-primary);
+}
+
+.primary-color:hover {
+	background-color: var(--bg-primary-hover);
+}
+
+.nav-link-btn.active {
+	background-color: var(--bg-primary-hover-nav);
+	color: white !important;
+}
+
+.nav-link-btn:hover {
+	background-color: var(--bg-primary-hover-nav);
+	color: white !important;
+	font-style: bold !important;
+}
+
+@media (min-width: 992px) {
+	.navbar-width-position {
+		width: calc(100% - 250px);
+		position: absolute;
+		top: 0px;
+		left: 250px;
+	}
+}
+
+.sidebar {
+	width: 100%;
+	background-color: var(--bg-primary);
+}
+
+.navbar-offcanvas {
+	background-color: var(--bg-primary);
+}
+
+.sidebar-width {
+	width: 250px;
+}
+
+.btn-bell {
+	padding: 12px 12px 6px;
+	position: relative;
+}
+
+.btn-bell:hover {
+	color: var(--bg-primary) !important;
+}
+
+.notify-number {
+	position: absolute;
+	font-size: 12px;
+	top: -12px;
+	right: -7px;
+}
+
+.dropdown-item.active,
+.dropdown-item:active {
+	background-color: transparent !important;
+}
+
+.dropdown-menu-item-hover:hover {
+	color: var(--bg-primary) !important;
+}
