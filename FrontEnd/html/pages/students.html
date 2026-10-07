@@ -1,0 +1,791 @@
+<div class="container-fluid">
+	<div class="card border-0 shadow">
+		<div class="p-4">
+			<div class="d-flex justify-content-between align-items-center mb-4">
+				<div>
+					<!-- search bar  -->
+					<div class="input-group">
+						<span
+							class="input-group-text text-secondary bg-transparent border-end-0 pe-0"
+						>
+							<i class="fa-solid fa-search"></i>
+						</span>
+						<input
+							type="text"
+							name="searchInput"
+							id="searchInput"
+							class="form-control border-start-0"
+							placeholder="Search here..."
+						/>
+					</div>
+				</div>
+
+				<button
+					type="button"
+					class="btn primary-color"
+					id="new-student-button"
+					data-bs-toggle="modal"
+					data-bs-target="#employeeDetailForm"
+				>
+					<i class="fa-solid fa-plus"></i>
+					New Student
+				</button>
+			</div>
+
+			<!-- add new student modal -->
+
+			<div
+				class="modal fade"
+				tabindex="-1"
+				id="employeeDetailForm"
+				aria-labelledby="employeeDetailFormLabel"
+				aria-hidden="true"
+				data-bs-backdrop="static"
+				data-bs-keyboard="false"
+			>
+				<div
+					class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-lg modal-fullscreen-sm-down"
+				>
+					<div class="modal-content">
+						<div class="modal-header">
+							<h4 class="modal-title">Add a New Student</h4>
+							<button
+								type="button"
+								class="btn-close"
+								data-bs-dismiss="modal"
+								aria-label="Close"
+							></button>
+						</div>
+
+						<div class="modal-body">
+							<form action="#" onsubmit="return false;">
+								<!-- not give user to just type fake data and submit  -->
+								<div class="row">
+									<div class="col-12 d-flex justify-content-center">
+										<button type="button" class="position-relative btn">
+											<div
+												class="border-2 rounded-pill border-info btn d-flex align-items-center"
+												style="height: 60px; width: 60px"
+												data-bs-toggle="tooltip"
+												data-bs-title="Upload a Profile Picture"
+											>
+												<i
+													class="fa-solid fa-image text-info"
+													style="font-size: 34px"
+												></i>
+											</div>
+
+											<i
+												class="fa-solid fa-camera text-info fw-bold position-absolute bottom-0"
+											></i>
+										</button>
+									</div>
+								</div>
+
+								<!-- Personal Information section -->
+								<div class="row">
+									<div class="col-12">
+										<p class="fw-bold h5">Personal Information :</p>
+										<div class="form-text mt-0 mb-3">
+											Fields with <span class="text-danger">"*"</span> must be
+											filled out.
+										</div>
+									</div>
+
+									<!-- full name & calling name -->
+									<div class="col-12 mb-3 mb-sm-3">
+										<div class="row g-3">
+											<div class="col-md-6 col-lg-6 mb-3 mb-sm-3 mb-lg-4">
+												<label
+													for="inputFullname"
+													class="form-label rounded fw-bold"
+													data-bs-toggle="tooltip"
+													data-bs-placement="top"
+													title="required"
+													aria-hidden="true"
+													>Full Name <span class="text-danger">*</span></label
+												>
+												<input
+													type="text"
+													name="inputFullname"
+													id="inputFullname"
+													class="form-control"
+													placeholder="EX: Haritha Bandara"
+													required
+												/>
+												<div class="valid-feedback">Valid Value...!</div>
+												<div class="invalid-feedback">
+													Invalid Full Name, Try Again!
+												</div>
+											</div>
+
+											<div class="col-md-6 col-lg-6 mb-3 mb-sm-3 mb-lg-4">
+												<label
+													for="selectCallingName"
+													class="form-label rounded fw-bold"
+													data-bs-toggle="tooltip"
+													data-bs-placement="top"
+													title="required"
+													aria-hidden="true"
+													>Calling Name
+													<span class="text-danger">*</span></label
+												>
+												<select
+													name="selectCallingName"
+													id="selectCallingName"
+													class="form-select"
+													required
+													disabled
+												></select>
+												<div class="valid-feedback">Valid Value...!</div>
+												<div class="invalid-feedback">
+													Invalid Calling Name, Try Again!
+												</div>
+											</div>
+										</div>
+									</div>
+									<!-- full name & calling name -->
+
+									<!-- NIC , birthday , age , gender -->
+									<div class="col-12 mb-3 mb-sm-3">
+										<div class="row g-3">
+											<div class="col-md-6 col-lg-3 mb-3 mb-sm-3 mb-lg-4">
+												<label
+													for="inputNIC"
+													class="form-label rounded fw-bold"
+													data-bs-toggle="tooltip"
+													data-bs-placement="top"
+													title="required"
+													aria-hidden="true"
+													>NIC <span class="text-danger">*</span></label
+												>
+												<input
+													type="text"
+													name="inputNIC"
+													id="inputNIC"
+													class="form-control"
+													placeholder="EX: Enter Valid NIC"
+													required
+													maxlength="12"
+												/>
+												<div class="valid-feedback">Valid Value...!</div>
+												<div class="invalid-feedback">
+													Invalid NIC, Try Again!
+												</div>
+											</div>
+
+											<div class="col-md-6 col-lg-3 mb-3 mb-sm-3 mb-lg-4">
+												<div>
+													<label
+														for="selectGender"
+														class="form-label rounded fw-bold"
+														data-bs-toggle="tooltip"
+														data-bs-placement="top"
+														title="required"
+														aria-hidden="true"
+														>Gender <span class="text-danger">*</span></label
+													>
+												</div>
+												<div class="row" id="selectGender">
+													<div class="form-check form-check-inline">
+														<input
+															type="radio"
+															name="inputGender"
+															id="radioMale"
+															value="Male"
+															disabled
+														/>
+														<label for="radioMale" class="fw-bold">Male</label>
+													</div>
+													<div class="form-check form-check-inline">
+														<input
+															type="radio"
+															name="inputGender"
+															id="radioFemale"
+															value="Female"
+															disabled
+														/>
+														<label for="radioFemale" class="fw-bold"
+															>Female</label
+														>
+													</div>
+												</div>
+											</div>
+
+											<div class="col-md-6 col-lg-3 mb-3 mb-sm-3 mb-lg-4">
+												<label
+													for="inputDOB"
+													class="form-label rounded fw-bold"
+													data-bs-toggle="tooltip"
+													data-bs-placement="top"
+													title="required"
+													>Date of birth
+													<span class="text-danger">*</span>
+												</label>
+												<input
+													type="date"
+													class="form-control"
+													name="inputDOB"
+													id="inputDOB"
+													disabled
+												/>
+												<div class="valid-feedback">Valid Value...!</div>
+												<div class="invalid-feedback">
+													Invalid Birth Date, Try Again!
+												</div>
+											</div>
+
+											<div class="col-md-6 col-lg-3 mb-3 mb-sm-3 mb-lg-4">
+												<label
+													for="inputAge"
+													class="form-label rounded fw-bold"
+													data-bs-toggle="tooltip"
+													data-bs-placement="top"
+													title="required"
+													aria-hidden="true"
+													>Age <span class="text-danger">*</span></label
+												>
+												<input
+													type="text"
+													name="inputAge"
+													id="inputAge"
+													class="form-control"
+													placeholder="Enter NIC First"
+													required
+													disabled
+													maxlength="10"
+												/>
+												<div class="valid-feedback">Valid Value...!</div>
+												<div class="invalid-feedback">
+													Invalid Age, Try Again!
+												</div>
+											</div>
+										</div>
+									</div>
+									<!-- NIC , birthday , age , gender -->
+
+									<!-- mobile number , civil status -->
+									<div class="col-12 mb-3 mb-sm-3">
+										<div class="row g-3">
+											<div class="col-md-6 col-lg-6 mb-3 mb-sm-3 mb-lg-4">
+												<label
+													for="inputMobileNumber"
+													class="form-label rounded fw-bold"
+													data-bs-toggle="tooltip"
+													data-bs-placement="top"
+													title="required"
+													aria-hidden="true"
+													>Mobile Number
+													<span class="text-danger">*</span></label
+												>
+												<!-- use common js validation on element -->
+
+												<input
+													type="text"
+													name="inputMobileNumber"
+													id="inputMobileNumber"
+													class="form-control"
+													placeholder="EX: 072 231 1231"
+													required
+													maxlength="10"
+													onkeyup="
+														textValueValidator(
+															this,
+															'^07[01245678][0-9]{7}$',
+															employee,
+															'mobile',
+														)
+													"
+												/>
+
+												<div class="valid-feedback">Valid Value...!</div>
+												<div class="invalid-feedback">
+													Invalid Mobile Number, Try Again!
+												</div>
+											</div>
+
+											<div class="col-md-6 col-lg-6 mb-3 mb-sm-3 mb-lg-4">
+												<label
+													for="selectCivilStatus"
+													class="form-label rounded fw-bold"
+													data-bs-toggle="tooltip"
+													data-bs-placement="top"
+													title="required"
+													aria-hidden="true"
+													>Civil Status
+													<span class="text-danger">*</span></label
+												>
+												<select
+													name="selectCivilStatus"
+													id="selectCivilStatus"
+													class="form-select"
+													required
+												>
+													<option value="" selected disabled>
+														Choose Civil Status
+													</option>
+													<option value="Married">Married</option>
+													<option value="Single">Single</option>
+												</select>
+											</div>
+										</div>
+									</div>
+									<!-- mobile number , civil status -->
+
+									<!-- address -->
+									<div class="col-12">
+										<label
+											for="inputAddress"
+											class="form-label rounded fw-bold"
+											data-bs-toggle="tooltip"
+											data-bs-placement="top"
+											title="required"
+											aria-hidden="true"
+											>Address <span class="text-danger">*</span></label
+										>
+										<textarea
+											type="text"
+											class="form-control"
+											id="inputAddress"
+											name="inputAddress"
+											placeholder="EX: No.231/B Kadawatha road,Kalubowila, Dehiwala"
+											required
+										></textarea>
+										<div class="valid-feedback">Valid Value...!</div>
+										<div class="invalid-feedback">
+											Invalid Address, Try Again!
+										</div>
+									</div>
+									<!-- address -->
+								</div>
+								<!-- Personal Information section -->
+
+								<!-- Necessary document upload section -->
+								<div class="row mt-5 mb-4">
+									<div class="col-12">
+										<div>
+											<p class="fw-bold h5">Necessary Document :</p>
+										</div>
+
+										<div class="row mb-3">
+											<!-- upload the document -->
+											<div class="col-md-6 col-lg-6">
+												<label
+													for="inputUploadMedical"
+													class="form-label rounded fw-bold"
+													data-bs-toggle="tooltip"
+													data-bs-placement="top"
+													title="required"
+													aria-hidden="true"
+													>Upload Medical
+													<span class="text-danger">*</span></label
+												>
+												<input
+													type="file"
+													name="inputUploadMedical"
+													id="inputUploadMedical"
+													class="form-control"
+													accept=".pdf, .png, .jpeg, .jpg"
+													required
+												/>
+												<div class="valid-feedback">Valid Value...!</div>
+												<div class="invalid-feedback">
+													Invalid Document, Try Again!
+												</div>
+											</div>
+											<!-- upload the document -->
+										</div>
+									</div>
+								</div>
+								<!-- Necessary document upload section -->
+							</form>
+						</div>
+
+						<!-- reset button have to manually clear Fields -->
+						<!-- continue , reset buttons -->
+						<div class="modal-footer">
+							<div class="row">
+								<div class="col-12">
+									<div class="row">
+										<div class="col-12 text-end">
+											<button
+												type="reset"
+												class="btn btn-reset btn-outline-secondary fw-bold"
+											>
+												Reset
+											</button>
+
+											<button
+												type="button"
+												class="btn primary-color fw-bold"
+												data-bs-target="#packageInstructionModal"
+												data-bs-toggle="modal"
+											>
+												Continue
+											</button>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- continue , reset buttons -->
+					</div>
+				</div>
+			</div>
+
+			<!-- add new student modal -->
+
+			<!-- vehicle category selection and package Instruction modal -->
+
+			<div
+				class="modal fade"
+				id="packageInstructionModal"
+				aria-hidden="true"
+				data-bs-backdrop="static"
+				data-bs-keyboard="false"
+				aria-labelledby="packageInstructionModalLabel"
+				tabindex="-1"
+			>
+				<div
+					class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-lg modal-fullscreen-sm-down"
+				>
+					<div class="modal-content">
+						<div class="modal-header">
+							<h4 class="modal-title fs-5" id="packageInstructionModalLabel">
+								Instructions for Package Selection
+							</h4>
+							<button
+								type="button"
+								class="btn-close"
+								data-bs-dismiss="modal"
+								aria-label="Close"
+							></button>
+						</div>
+						<div class="modal-body">
+							<div class="">
+								<div>
+									<h5 class="fw-bold">
+										Select Your Vehicle Training Categories
+									</h5>
+									<p>
+										Please select the vehicle categories you wish to enroll in.
+										You may select one or more categories based on your training
+										goals.
+									</p>
+									<ul>
+										<li>
+											<span class="fw-bold">Available Categories:</span> Bike,
+											Three-Wheel, Car (Manual/Auto), Light Vehicle and Heavy
+											Vehicles
+										</li>
+										<li>
+											<i class="form-text">
+												<span class="fw-medium">Automatic Bundling:</span> If
+												you select Bike, Three-Wheel, and Car simultaneously,
+												the system will automatically select Light Vehicle for
+												you.
+											</i>
+										</li>
+										<li>
+											<span class="fw-bold">Heavy Vehicles:</span> Enrolling in
+											a heavy vehicle requires a valid light vehicle driving
+											license and a minimum of 2 years of driving experience,
+											subject to verification.
+										</li>
+									</ul>
+
+									<h5 class="fw-bold">💰 Pricing & Lesson Guidelines</h5>
+									<ul>
+										<li>
+											<span class="fw-bold">Registration Fee:</span> A one-time
+											fee of Rs. 5,000.00 applies regardless of the number of
+											categories selected.
+										</li>
+										<li>
+											<span class="fw-bold"
+												>Standard Lesson Durations & Rates:
+											</span>
+											<ul>
+												<li>
+													<span class="fw-bold">Bike & Three-Wheel: </span>Rs.
+													1,000.00 / lesson (30 minutes per lesson)
+												</li>
+												<li>
+													<span class="fw-bold">Car (Manual / Auto): </span>
+													Rs. 1,500.00 / lesson (30 minutes per lesson)
+												</li>
+												<li>
+													<span class="fw-bold">Light Vehicle: </span>Standard
+													package rates apply based on selections.
+												</li>
+												<li>
+													<span class="fw-bold">Heavy Vehicle: </span>Rs.
+													2,000.00 / lesson (45 minutes per lesson)
+												</li>
+											</ul>
+										</li>
+										<li>
+											<span class="fw-bold">Custom Lesson Packages:</span>
+											<ul>
+												<li>
+													You can customize your lesson counts for any category.
+												</li>
+												<li>
+													<span class="fw-bold"
+														>Minimum Lesson Requirements: </span
+													>Car require a <strong>minimum of 5 lessons</strong>.
+													Bike / Three-Wheel
+													<strong>minimum of 1 lesson</strong>. Heavy vehicle
+													categories require a
+													<strong>minimum of 6 lessons.</strong>
+												</li>
+												<li>
+													You are free to add more lessons as needed; the total
+													price will update automatically. Lesson counts cannot
+													be reduced below the specified minimums.
+												</li>
+											</ul>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+
+						<div class="modal-footer">
+							<button
+								type="button"
+								class="btn btn-outline-secondary"
+								data-bs-target="#employeeDetailForm"
+								data-bs-toggle="modal"
+							>
+								Back
+							</button>
+							<button
+								type="button"
+								class="btn primary-color"
+								data-bs-target="#employeeDetailForm"
+								data-bs-toggle="modal"
+							>
+								Understood, Next
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- vehicle category selection and package Instruction modal -->
+			<div
+				class="modal fade"
+				id="packageInstructionModal"
+				aria-hidden="true"
+				data-bs-backdrop="static"
+				data-bs-keyboard="false"
+				aria-labelledby="packageInstructionModalLabel"
+				tabindex="-1"
+			>
+				<div
+					class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-lg modal-fullscreen-sm-down"
+				>
+					<div class="modal-content">
+						<div class="modal-header">
+							<h4 class="modal-title fs-5" id="packageInstructionModalLabel">
+								Instructions for Package Selection
+							</h4>
+							<button
+								type="button"
+								class="btn-close"
+								data-bs-dismiss="modal"
+								aria-label="Close"
+							></button>
+						</div>
+						<div class="modal-body">
+							
+						</div>
+						<div class="modal-footer"></div>
+					</div>
+				</div>
+			</div>
+
+			<!-- student detail table -->
+			<div class="card-body p-0">
+				<div class="table-responsive">
+					<table
+						class="table table-hover text-center align-middle bg-transparent"
+					>
+						<thead>
+							<tr>
+								<th scope="col" class="text-center align-middle">
+									Employee ID
+								</th>
+								<th scope="col" class="text-center align-middle">Full name</th>
+								<th scope="col" class="text-center align-middle">Email</th>
+								<th scope="col" class="text-center align-middle">
+									Designation
+								</th>
+								<th scope="col" class="text-center align-middle">
+									Employee Status
+								</th>
+								<th scope="col" class="text-center align-middle">Modify</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>emp123</td>
+								<td>Harith Bandara</td>
+								<td>harith@gmail.com</td>
+								<td>Manager</td>
+								<td class="text-success">Working</td>
+								<td>
+									<div class="dropdown">
+										<a
+											href="#"
+											class="btn"
+											role="button"
+											data-bs-toggle="dropdown"
+											aria-expanded="false"
+											><i class="fa-solid fa-gear text-black"></i
+										></a>
+										<div class="dropdown-menu p-2">
+											<div class="btn-group">
+												<button
+													type="button"
+													class="btn btn-outline-info fw-medium"
+												>
+													Edit
+												</button>
+												<button
+													type="button"
+													class="btn btn-outline-warning fw-medium"
+												>
+													Update
+												</button>
+												<button
+													type="button"
+													class="btn btn-outline-danger fw-medium"
+												>
+													Delete
+												</button>
+											</div>
+										</div>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td>emp124</td>
+								<td>Nethmini Kadithuwakku</td>
+								<td>Nethmini321@gmail.com</td>
+								<td>Administrator</td>
+								<td class="text-success">Working</td>
+								<td>
+									<div
+										class="btn-group"
+										role="group"
+										aria-label="modify button"
+									>
+										<button type="button" class="btn btn-info btn-sm">
+											View
+										</button>
+										<button type="button" class="btn btn-warning btn-sm">
+											Edit
+										</button>
+										<button type="button" class="btn btn-danger btn-sm">
+											Delete
+										</button>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td>emp125</td>
+								<td>Nathara Bandara</td>
+								<td>Nathara32@gmail.com</td>
+								<td>Instructor</td>
+								<td class="text-danger">Resign</td>
+								<td>
+									<div
+										class="btn-group"
+										role="group"
+										aria-label="modify button"
+									>
+										<button type="button" class="btn btn-info btn-sm">
+											View
+										</button>
+										<button
+											type="button"
+											class="btn btn-warning btn-sm disabled"
+										>
+											Edit
+										</button>
+										<button
+											type="button"
+											class="btn btn-danger btn-sm disabled"
+										>
+											Delete
+										</button>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td>emp126</td>
+								<td>Nadun Malinda</td>
+								<td>nadun12@gmail.com</td>
+								<td>Instructor</td>
+								<td class="text-success">Working</td>
+								<td>
+									<div
+										class="btn-group"
+										role="group"
+										aria-label="modify button"
+									>
+										<button type="button" class="btn btn-info btn-sm">
+											View
+										</button>
+										<button type="button" class="btn btn-warning btn-sm">
+											Edit
+										</button>
+										<button type="button" class="btn btn-danger btn-sm">
+											Delete
+										</button>
+									</div>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div class="d-flex justify-content-between align-items-center mt-4">
+					<div class="form-text">Showing 1 to 9 of 9 entries</div>
+					<div class="btn-group gap-2">
+						<!-- <button type="button" class="btn btn-outline-dark rounded">
+						<i class="fa-solid fa-angles-left"></i>
+					</button>
+					<button type="button" class="btn primary-color text-white rounded">
+						1
+					</button>
+					<button type="button" class="btn btn-outline-dark rounded">
+						<i class="fa-solid fa-angles-right"></i>
+					</button> -->
+						<nav aria-label="table navigation">
+							<ul class="pagination">
+								<li class="page-item">
+									<a class="page-link" href="#" aria-label="Previous">
+										<span aria-hidden="true">&laquo;</span>
+									</a>
+								</li>
+								<li class="page-item">
+									<a class="page-link active" href="#">1</a>
+								</li>
+								<li class="page-item"><a class="page-link" href="#">2</a></li>
+								<li class="page-item"><a class="page-link" href="#">3</a></li>
+								<li class="page-item">
+									<a class="page-link" href="#" aria-label="Next">
+										<span aria-hidden="true">&raquo;</span>
+									</a>
+								</li>
+							</ul>
+						</nav>
+					</div>
+				</div>
+			</div>
+			<!-- student detail table -->
+		</div>
+	</div>
+</div>
