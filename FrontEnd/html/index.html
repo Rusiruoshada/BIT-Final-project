@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+		<title>Malinda Driving School</title>
+
+		<link
+			rel="stylesheet"
+			href="../lib/bootstrap-5.3.8/css/bootstrap.min.css"
+		/>
+
+		<link
+			rel="stylesheet"
+			href="../lib/fontawesome-free-7.3.1/css/all.min.css"
+		/>
+
+		<link rel="stylesheet" href="../css/common.css" />
+		
+	</head>
+
+	<body class="bg-body-secondary bg-opacity-50">
+		<div class="d-flex min-vh-100">
+			<aside
+				class="sidebar-width d-none d-lg-block flex-shrink-0"
+				aria-label="Main navigation"
+			>
+				<div class="sidebar vh-100 p-3">
+					<!-- Sidebar logo  -->
+					<header class="sidebar-header mb-5">
+						<h5 class="sidebar-title fw-bold text-white m-0" id="sidebarLabel">
+							<i class="fa-solid fa-motorcycle"></i>
+							Malinda
+						</h5>
+
+						<span class="text-warning"> Driving School </span>
+					</header>
+					<!-- Sidebar logo  -->
+
+					<!-- Sidebar Navigation items -->
+					<nav class="sidebar-body p-0 text-white">
+						<ul class="list-unstyled m-0 p-0" id="sidebar-navigation">
+							<!--ITEMs FILL WITH JS FILE -->
+						</ul>
+					</nav>
+					<!-- Sidebar Navigation items -->
+				</div>
+			</aside>
+
+			<div class="flex-grow-1 min-w-0 w-100">
+				<!-- Top Navbar                     -->
+				<header>
+					<nav
+						class="navbar navbar-light bg-white p-3"
+						aria-label="Top navigation"
+					>
+						<div class="container-fluid">
+							<!-- Left Side -->
+							<div class="d-flex align-items-center gap-3">
+								<!-- Mobile Sidebar Toggle -->
+								<button
+									type="button"
+									class="navbar-toggler p-1 border-1 d-lg-none"
+									data-bs-toggle="offcanvas"
+									data-bs-target="#offcanvasNavbar"
+									aria-controls="offcanvasNavbar"
+									aria-expanded="false"
+									aria-label="Toggle navigation"
+								>
+									<span class="navbar-toggler-icon h6 m-0"></span>
+								</button>
+
+								<!-- Page Title -->
+								<h6 class="navbar-brand m-0 fw-bold">DashBoard</h6>
+							</div>
+							<!-- Left Side -->
+
+							<!-- Right Side -->
+							<div class="d-flex align-items-center gap-2">
+								<!-- Notification Button -->
+								<div class="dropdown">
+									<button
+										type="button"
+										class="btn-bell rounded-circle btn text-secondary bg-body-secondary bg-opacity-50 position-relative "
+										aria-label="Notifications"
+										data-bs-toggle="dropdown"
+										aria-expanded="false"
+									>
+										<i class="fa-solid fa-bell fa-swing h5" id="fa-bell-icon"></i>
+
+										<span
+											class="notify-number rounded-circle text-white fw-bold bg-danger p-1"
+											id="notification-count"
+										>
+											<!-- notification count will set by backend -->
+										</span>
+									</button>
+									<ul
+										class="dropdown-menu dropdown-menu-end border-0"
+										id="notify-list"
+										style="width: 400px"
+									>
+										
+										<li class="p-2" id="open-notification">
+											<button
+												type="button"
+												class="dropdown-item text-center bg-primary-subtle shadow rounded-pill"
+												id="open-notification-button"
+											>
+												<i class="fa-regular fa-envelope-open"></i> Open
+												Notification
+											</button>
+										</li>
+									</ul>
+								</div>
+								<!-- Notification Button -->
+
+								<!-- User Profile -->
+								<div class="dropdown">
+									<button
+										type="button"
+										class="btn border-0 d-flex align-items-center gap-2"
+										data-bs-toggle="dropdown"
+										aria-expanded="false"
+									>
+										<img
+											class="p-0 m-0 rounded-circle"
+											src="../resources/images/profile-pic.jpeg"
+											width="40"
+											height="40"
+											alt="profile-image"
+										/>
+
+										<span> Admin Diablo </span>
+
+										<i class="fa-solid fa-chevron-down"></i>
+									</button>
+
+									<ul class="dropdown-menu dropdown-menu-end border-0">
+										<li>
+											<a
+												href="#"
+												class="dropdown-item d-flex gap-1 align-items-center text-secondary dropdown-menu-item-hover"
+											>
+												<i class="fa-solid fa-user"></i>
+												<span>Profile</span>
+											</a>
+										</li>
+
+										<li>
+											<a
+												href="#"
+												class="dropdown-item d-flex gap-1 align-items-center text-secondary dropdown-menu-item-hover"
+											>
+												<i class="fa-solid fa-arrow-right-from-bracket"></i>
+												<span>Logout</span>
+											</a>
+										</li>
+									</ul>
+								</div>
+								<!-- User Profile -->
+							</div>
+							<!-- Right Side -->
+
+							<!-- ============================= -->
+							<!-- Mobile Offcanvas Sidebar      -->
+							<!-- ============================= -->
+							<div
+								class="offcanvas offcanvas-start d-lg-none navbar-offcanvas"
+								id="offcanvasNavbar"
+								tabindex="-1"
+								data-bs-scroll="true"
+								style="--bs-offcanvas-width: 300px"
+								aria-labelledby="offcanvasNavbarLabel"
+							>
+								<!-- Offcanvas Header -->
+								<div class="offcanvas-header">
+									<div>
+										<h5
+											class="offcanvas-title fw-bold text-white"
+											id="offcanvasNavbarLabel"
+										>
+											<i class="fa-solid fa-motorcycle"></i>
+											Malinda
+										</h5>
+
+										<span class="text-warning"> Driving School </span>
+									</div>
+
+									<button
+										type="button"
+										class="btn-close btn-close-white"
+										data-bs-dismiss="offcanvas"
+										aria-label="Close"
+									></button>
+								</div>
+
+								<!-- Offcanvas Navigation -->
+								<div class="offcanvas-body p-3 text-white fw-bold">
+									<nav aria-label="Mobile main navigation">
+										<ul class="list-unstyled m-0 p-0" id="offcanvas-navigation">
+											<!--ITEMs FILL WITH JS FILE -->
+										</ul>
+									</nav>
+								</div>
+							</div>
+						</div>
+					</nav>
+				</header>
+				<!-- Top Navbar                     -->
+
+				<!-- ============================= -->
+				<!-- Page Content                   -->
+				<!-- ============================= -->
+				<main id="app-content" class="p-3">
+					<!-- dashboard content here -->
+
+
+
+					<!-- dashboard content here -->
+				</main>
+			</div>
+		</div>
+
+		<!-- Bootstrap js -->
+		<script src="../lib/bootstrap-5.3.8/js/bootstrap.bundle.min.js"></script>
+		
+		<!-- pageLoader js -->
+		<script src="../js/pageLoader.js"></script>
+		
+		<!-- common js -->
+		<script src="../js/common.js"></script>
+
+	</body>
+</html>
