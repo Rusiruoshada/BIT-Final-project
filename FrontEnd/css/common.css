@@ -5,6 +5,10 @@
     --bg-primary-hover: #0b4f7a;
 }
 
+.text-primary{
+	color:var(--bg-primary)!important;
+}
+
 .primary-color {
 	background-color: var(--bg-primary);
 }
