@@ -1,69 +1,27 @@
-// aria-hidden warning have to fix -> either when closing have to manually 
-//happens because an element inside your modal (in this case, <button.btn btn-secondary>) still has active keyboard/browser focus, while the modal container itself has been marked with aria-hidden="true" (or is hidden).
+export const init = () => {
 
+	// use global notify or fallback if notify is available
+	const notifications = window.notify || [];
 
-const openNotificationModal = (notificationId) => {
-	if (notificationId != null && notificationId <= notify.length) {
-		// set title to modal
-		document.querySelector('#notificationModalTitle').textContent =
-			notify[notificationId - 1].title;
+	const notificationList = document.querySelector('#notification-list');
 
-		//set description to the modal
-		document.querySelector('#notificationModalDescription').textContent =
-			notify[notificationId - 1].description;
+	const notificationCount = document.querySelector(
+		'#notification-count-in-page',
+	);
 
-		// caught modal date element
-		const notificationModalDateElement = document.querySelector(
-			'#notificationModalDate',
-		);
+	notificationCount.textContent = `${notifications.length} Notifications`;
 
-		// set date to -> week Month day year (Mon Oct 03 2026)
-		notificationModalDateElement.textContent = new Date(
-			notify[notificationId - 1].date,
-		).toDateString();
+	if (notificationList && notifications.length > 0) {
 
-		// add date status color
-		// notificationModalDateElement.classList.add(`bg-${notify[notificationId-1].status}-subtle`)
+		//clear previous list when re-initialized
+		notificationList.innerHTML = '';
 
-		const statusElement = document.querySelector('#notificationModalStatus');
+		notifications.forEach((notification) => {
+			const cardBodyElement = document.createElement('div');
 
-		if (notify[notificationId - 1].status == 'danger') {
-			statusElement.textContent = 'Attention'.toUpperCase();
-		} else {
-			statusElement.textContent =
-				notify[notificationId - 1].status.toUpperCase();
-		}
-		// statusElement.className = `bg-${notify[notificationId-1].status}-subtle`;
+			cardBodyElement.className = `card border-${notification.status} shadow-sm`;
 
-		const modalBodyElement = document.querySelector('#modal-body');
-		modalBodyElement.classList.add(
-			`bg-${notify[notificationId - 1].status}-subtle`,
-		);
-
-		// Open modal
-		// just adding css class how to modal not work
-		const notificationModalElement =
-			document.querySelector('#notificationModal');
-
-		const modal = new bootstrap.Modal(notificationModalElement);
-
-		modal.show();
-	}
-};
-
-const notificationList = document.querySelector('#notification-list');
-
-const notificationCount = document.querySelector('#notification-count-in-page');
-
-notificationCount.textContent = `${notify.length} Notifications`;
-
-if (notify.length > 0) {
-	notify.forEach((notification) => {
-		const cardBodyElement = document.createElement('div');
-
-		cardBodyElement.className = `card border-${notification.status} shadow-sm`;
-
-		cardBodyElement.innerHTML = `
+			cardBodyElement.innerHTML = `
         <div class="card-body btn" id='notification-card-in-page-${notification.id}'>
 
             <!-- Header -->
@@ -101,11 +59,11 @@ if (notify.length > 0) {
         </div>
     `;
 
-		cardBodyElement.addEventListener('click', () => {
-			openNotificationModal(notification.id);
+			cardBodyElement.addEventListener('click', () => {
+				openNotificationModal(notification.id);
+			});
+
+			notificationList.appendChild(cardBodyElement);
 		});
-
-		notificationList.appendChild(cardBodyElement);
-	});
-}
-
+	}
+};
