@@ -122,7 +122,7 @@ sidebarNavigationItems.forEach((item) => {
 // create navigation items on both side bar and offcanvas
 // ================================================================================
 
-let notify = [
+window.notify = [
 	{
 		id: 1,
 		title: 'New Student Enrolled',
@@ -208,7 +208,8 @@ if (notify.length <= 0) {
 			'dropdown-item',
 			`${notification.id}`,
 			'div',
-			`data-bs-toggle="modal" data-bs-target="#notificationModal"`,
+			'',
+			// `data-bs-toggle="modal" data-bs-target="#notificationModal"`, // this will cause bug on backdrop
 			`card border-${notification.status}  btn p-0`,
 			`<div class="card-body">
                     <div
@@ -232,8 +233,8 @@ if (notify.length <= 0) {
 
 		// onClick listener when click notification user direct to notification function
 		element.addEventListener('click', () => {
-			// openNotificationModal(notification.id);
-			loadPage('notification');
+			window.openNotificationModal(notification.id);
+			// loadPage('notification'); // this will user direct to the notification.html page
 		});
 
 		// open notification button always set last
@@ -243,4 +244,84 @@ if (notify.length <= 0) {
 
 // ================================================================================
 // notification show
+// ================================================================================
+
+// ================================================================================
+// FIX for aria-hidden warning => right before modal hide , blur any active element
+// ================================================================================
+
+window.fixAriaHiddenModalIssus = (modalName = '') => {
+	const notificationModalElement = document.querySelector(`#${modalName}`);
+	if (notificationModalElement) {
+		notificationModalElement.addEventListener('hide.bs.modal', () => {
+			if (document.activeElement) {
+				document.activeElement.blur(); // this will blur any active element is modal
+			}
+		});
+	}
+};
+
+// ================================================================================
+// FIX for aria-hidden warning => right before modal hide , blur any active element
+// ================================================================================
+
+// ================================================================================
+// global notification modal handler 
+// ================================================================================
+
+window.openNotificationModal = (notificationId) => {
+	// use global notify or fallback if notify is available
+	const notifications = window.notify || [];
+
+	if (notificationId != null && notificationId <= notify.length) {
+		const item = notifications[notificationId - 1];
+
+		// set title to modal
+		document.querySelector('#notificationModalTitle').textContent = item.title;
+
+		//set description to the modal
+		document.querySelector('#notificationModalDescription').textContent =
+			item.description;
+
+		// caught modal date element
+		const notificationModalDateElement = document.querySelector(
+			'#notificationModalDate',
+		);
+
+		// set date to -> week Month day year (Mon Oct 03 2026)
+		notificationModalDateElement.textContent = new Date(
+			item.date,
+		).toDateString();
+
+		// add date status color
+		// notificationModalDateElement.classList.add(`bg-${item.status}-subtle`)
+
+		const statusElement = document.querySelector('#notificationModalStatus');
+
+		if (item.status == 'danger') {
+			statusElement.textContent = 'ATTENTION';
+		} else {
+			statusElement.textContent = item.status.toUpperCase();
+		}
+		// statusElement.className = `bg-${item.status}-subtle`;
+
+		const modalBodyElement = document.querySelector('#modal-body');
+		modalBodyElement.className = `modal-body bg-${item.status}-subtle`;
+
+		// Open modal
+		// just adding css class how to modal not work
+		const notificationModalElement =
+			document.querySelector('#notificationModal');
+
+		const modal = new bootstrap.Modal(notificationModalElement);
+
+		modal.show();
+	}
+};
+
+// to prevent aria-hidden issus with active element that active even after hide the modal
+fixAriaHiddenModalIssus('notificationModal');
+
+// ================================================================================
+// global notification modal handler 
 // ================================================================================
