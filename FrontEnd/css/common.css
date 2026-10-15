@@ -3,28 +3,83 @@
 	--bg-primary-hover-nav: rgba(74, 90, 78, 0.23);
 	--bg-primary: #0d4365;
     --bg-primary-hover: #0b4f7a;
+	--text-white:#fff;
 }
+/* searchbar for table filter */
+
+.searchBarFroTable .searchIcon{
+	top: 8px;
+	left: 10px;
+	
+}
+
+.searchBarFroTable .searchInput{
+	padding-left: 40px;
+}
+
+.searchBarFroTable .searchInput:hover{
+	border-color: var(--bg-primary);
+}
+
+.searchBarFroTable .searchInput:focus{
+	border-color: var(--bg-primary)!important;
+}
+
+/* searchbar for table filter */
 
 .text-primary{
 	color:var(--bg-primary)!important;
 }
 
 .primary-color {
-	background-color: var(--bg-primary);
+	background-color: var(--bg-primary)!important;
 }
 
 .primary-color:hover {
 	background-color: var(--bg-primary-hover);
 }
 
+.page-link{
+	color: var(--bg-primary)!important;
+	border: 0;
+}
+
+.btn{
+	border: 0!important;;
+}
+
+.btn.btn-primary{
+	box-shadow: 1px 1px 5px #0d4365!important;
+	background-color: var(--bg-primary)!important;
+	color: var(--text-white);
+}
+
+
+.btn.btn-primary:hover{
+	box-shadow: 1px 1px 8px #0d4365!important;
+	background-color: var(--bg-primary-hover)!important;
+	color: var(--text-white);
+}
+
+.border-primary{
+	border-width: 2px;
+	border-color: var(--bg-primary);
+}
+
+.page-link.active{
+	color: var(--text-white)!important;
+	background-color: var(--bg-primary)!important;
+	border: 0;
+}
+
 .nav-link-btn.active {
 	background-color: var(--bg-primary-hover-nav);
-	color: white !important;
+	color: var(--text-white) !important;
 }
 
 .nav-link-btn:hover {
 	background-color: var(--bg-primary-hover-nav);
-	color: white !important;
+	color: var(--text-white) !important;
 	font-style: bold !important;
 }
 
