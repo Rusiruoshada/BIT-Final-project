@@ -4,17 +4,17 @@
 			<div class="d-flex justify-content-between align-items-center mb-4">
 				<div>
 					<!-- search bar  -->
-					<div class="input-group">
+					<div class="position-relative searchBarFroTable">
 						<span
-							class="input-group-text text-secondary bg-transparent border-end-0 pe-0"
+							class="position-absolute searchIcon"
 						>
-							<i class="fa-solid fa-search"></i>
+							<i class="fa-solid fa-search text-secondary"></i>
 						</span>
 						<input
 							type="text"
 							name="searchInput"
 							id="searchInput"
-							class="form-control border-start-0"
+							class="form-control shadow-none searchInput"
 							placeholder="Search here..."
 						/>
 					</div>
@@ -22,7 +22,7 @@
 
 				<button
 					type="button"
-					class="btn primary-color"
+					class="btn btn-primary"
 					id="new-student-button"
 					data-bs-toggle="modal"
 					data-bs-target="#employeeDetailForm"
@@ -64,19 +64,19 @@
 									<div class="col-12 d-flex justify-content-center">
 										<button type="button" class="position-relative btn">
 											<div
-												class="border-2 rounded-pill border-info btn d-flex align-items-center"
+												class="border-2 rounded-pill border-primary d-flex align-items-center"
 												style="height: 60px; width: 60px"
 												data-bs-toggle="tooltip"
 												data-bs-title="Upload a Profile Picture"
 											>
 												<i
-													class="fa-solid fa-image text-info"
+													class="fa-solid fa-image text-primary"
 													style="font-size: 34px"
 												></i>
 											</div>
 
 											<i
-												class="fa-solid fa-camera text-info fw-bold position-absolute bottom-0"
+												class="fa-solid fa-camera text-primary fw-bold position-absolute bottom-0"
 											></i>
 										</button>
 									</div>
@@ -417,7 +417,7 @@
 
 											<button
 												type="button"
-												class="btn primary-color fw-bold"
+												class="btn btn-primary fw-bold"
 												data-bs-target="#packageInstructionModal"
 												data-bs-toggle="modal"
 											>
@@ -435,7 +435,7 @@
 
 			<!-- add new student modal -->
 
-			<!-- vehicle category selection and package Instruction modal -->
+			<!-- vehicle category and package selection Instruction modal -->
 
 			<div
 				class="modal fade"
@@ -562,7 +562,7 @@
 							</button>
 							<button
 								type="button"
-								class="btn primary-color"
+								class="btn btn-primary"
 								data-bs-target="#packageSelection"
 								data-bs-toggle="modal"
 								id="packageInstructionModalOpen"
@@ -574,7 +574,10 @@
 				</div>
 			</div>
 
-			<!-- vehicle category selection and package Instruction modal -->
+			<!-- vehicle category and package selection Instruction modal -->
+			
+			<!-- vehicle category and package selection modal -->
+
 			<div
 				class="modal fade"
 				id="packageSelection"
@@ -615,7 +618,7 @@
 							</button>
 							<button
 								type="button"
-								class="btn primary-color"
+								class="btn btn-primary"
 							>
 								Confirm
 							</button>
@@ -623,6 +626,8 @@
 					</div>
 				</div>
 			</div>
+
+			<!-- vehicle category and package selection modal -->
 
 			<!-- student detail table -->
 			<div class="card-body p-0">
@@ -772,17 +777,8 @@
 				<div class="d-flex justify-content-between align-items-center mt-4">
 					<div class="form-text">Showing 1 to 9 of 9 entries</div>
 					<div class="btn-group gap-2">
-						<!-- <button type="button" class="btn btn-outline-dark rounded">
-						<i class="fa-solid fa-angles-left"></i>
-					</button>
-					<button type="button" class="btn primary-color text-white rounded">
-						1
-					</button>
-					<button type="button" class="btn btn-outline-dark rounded">
-						<i class="fa-solid fa-angles-right"></i>
-					</button> -->
 						<nav aria-label="table navigation">
-							<ul class="pagination">
+							<ul class="pagination text-primary">
 								<li class="page-item">
 									<a class="page-link" href="#" aria-label="Previous">
 										<span aria-hidden="true">&laquo;</span>
