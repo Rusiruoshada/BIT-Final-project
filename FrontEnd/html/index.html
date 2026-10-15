@@ -17,7 +17,6 @@
 		/>
 
 		<link rel="stylesheet" href="../css/common.css" />
-		
 	</head>
 
 	<body class="bg-body-secondary bg-opacity-50">
@@ -27,7 +26,7 @@
 				aria-label="Main navigation"
 			>
 				<div class="sidebar vh-100 p-3">
-					<!-- Sidebar logo  -->
+					<!-- sidebar logo  -->
 					<header class="sidebar-header mb-5">
 						<h5 class="sidebar-title fw-bold text-white m-0" id="sidebarLabel">
 							<i class="fa-solid fa-motorcycle"></i>
@@ -36,12 +35,12 @@
 
 						<span class="text-warning"> Driving School </span>
 					</header>
-					<!-- Sidebar logo  -->
+					<!-- sidebar logo  -->
 
 					<!-- Sidebar Navigation items -->
 					<nav class="sidebar-body p-0 text-white">
 						<ul class="list-unstyled m-0 p-0" id="sidebar-navigation">
-							<!--ITEMs FILL WITH JS FILE -->
+							<!--navbar items fill with js here -->
 						</ul>
 					</nav>
 					<!-- Sidebar Navigation items -->
@@ -72,7 +71,7 @@
 								</button>
 
 								<!-- Page Title -->
-								<h6 class="navbar-brand m-0 fw-bold">DashBoard</h6>
+								<h6 class="navbar-brand m-0 fw-bold" id="navbarPageTitle"></h6>
 							</div>
 							<!-- Left Side -->
 
@@ -82,12 +81,15 @@
 								<div class="dropdown">
 									<button
 										type="button"
-										class="btn-bell rounded-circle btn text-secondary bg-body-secondary bg-opacity-50 position-relative "
+										class="btn-bell rounded-circle btn text-secondary bg-body-secondary bg-opacity-50 position-relative"
 										aria-label="Notifications"
 										data-bs-toggle="dropdown"
 										aria-expanded="false"
 									>
-										<i class="fa-solid fa-bell fa-swing h5" id="fa-bell-icon"></i>
+										<i
+											class="fa-solid fa-bell fa-swing h5"
+											id="fa-bell-icon"
+										></i>
 
 										<span
 											class="notify-number rounded-circle text-white fw-bold bg-danger p-1"
@@ -101,7 +103,8 @@
 										id="notify-list"
 										style="width: 400px"
 									>
-										
+										<!-- notification will appear here -->
+
 										<li class="p-2" id="open-notification">
 											<button
 												type="button"
@@ -211,26 +214,91 @@
 				<!-- Top Navbar                     -->
 
 				<!-- ============================= -->
-				<!-- Page Content                   -->
+				<!-- page Content                   -->
 				<!-- ============================= -->
 				<main id="app-content" class="p-3">
 					<!-- dashboard content here -->
-
-
 
 					<!-- dashboard content here -->
 				</main>
 			</div>
 		</div>
 
+		<!-- notification modal that open when click notifications -->
+
+		<div class="notification-body">
+			<div
+				class="modal fade"
+				id="notificationModal"
+				tabindex="-1"
+				aria-hidden="true"
+			>
+				<div class="modal-dialog modal-dialog-centered">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title" id="notificationModalTitle">
+								<!-- notification title goes here -->
+							</h5>
+
+							<button
+								type="button"
+								class="btn-close"
+								data-bs-dismiss="modal"
+								aria-label="Close"
+								id="btn-close-modal"
+							></button>
+						</div>
+
+						<div class="modal-body" id="modal-body">
+							<div class="d-flex justify-content-between">
+								<div class="mb-3">
+									<small class="text-muted"> Date </small>
+
+									<div id="notificationModalDate" class="fw-medium">
+										<!-- notification date goes here -->
+									</div>
+								</div>
+
+								<div class="mb-3 text-end">
+									<small class="text-muted"> Status </small>
+
+									<div>
+										<span
+											id="notificationModalStatus"
+											class="fw-bold text-black"
+										>
+											<!-- notification status goes here -->
+										</span>
+									</div>
+								</div>
+							</div>
+
+							<div>
+								<small class="text-muted"> Description </small>
+
+								<p id="notificationModalDescription" class="mb-0">
+									<!-- notification Description goes here -->
+								</p>
+							</div>
+						</div>
+
+						<div class="modal-footer">
+							<!-- notification footer goes here -->
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- notification modal that open when click notifications -->
+
 		<!-- Bootstrap js -->
 		<script src="../lib/bootstrap-5.3.8/js/bootstrap.bundle.min.js"></script>
-		
+
 		<!-- pageLoader js -->
-		<script src="../js/pageLoader.js"></script>
-		
+		<script type="module" src="../js/pageLoader.js"></script>
+
 		<!-- common js -->
 		<script src="../js/common.js"></script>
-
 	</body>
 </html>
