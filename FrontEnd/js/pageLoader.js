@@ -1,7 +1,7 @@
 const appContent = document.querySelector('#app-content');
 
 // explicitly tell loadPage() as global -> otherwise its show error loadPage() not shows
-window.loadPage = async (page) => {
+export const loadPage = async (page) => {
 	try {
 		// load the html page
 		const response = await fetch(`./pages/${page}.html`);
@@ -13,23 +13,35 @@ window.loadPage = async (page) => {
 		const html = await response.text();
 		appContent.innerHTML = html;
 		
+		// set page title to loading page name
+		const pageTitle = document.querySelector('#navbarPageTitle');
+		pageTitle ? pageTitle.innerText = page.toUpperCase() : '';
 
-		// this will load js again and again have to do some thing==============================================================
 		// load the js page if its exits
 		const pageWithScript = ['notification','students']; // use this array to define what js pages there show network 404 page fail error not show on the console
 
 		if (pageWithScript.includes(page)) {
-			const jsPage = await fetch(`../js/pages/${page}.js`);
+			
+			try {
+				
+				// then import and append the script again
+				// this will dynamically import the module
+				const jsPage = await import(`../js/pages/${page}.js`);
 
-			if (jsPage.ok) {
-				const script = document.createElement('script');
+				// if the jsPage module export a init function run it 1st
+				// when we import it will not suddenly appear on app-content so when it available init() will run
+				if (jsPage && typeof jsPage.init === 'function') {
+					jsPage.init();
+				}
 
-				script.src = `../js/pages/${page}.js`;
-
-				script.dataset.pageScript = page;
-				document.body.appendChild(script);
+			} catch (error) {
+				console.warn(`failed to load script for page: ${page}`,error)
 			}
+
+
+			
 		}
+
 	} catch (error) {
 		console.error(error);
 
@@ -41,13 +53,12 @@ window.loadPage = async (page) => {
 	}
 };
 
-loadPage('students');
-
+window.loadPage = loadPage;
 
 window.setModal = async (modals, appendElement) => {
 	try {
 		const response = await fetch(`components/${modals}.html`);
-
+		
 		// Check if the file actually exists / loaded successfully
 		if (!response.ok) {
 			throw new Error(
