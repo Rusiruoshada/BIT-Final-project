@@ -1,0 +1,173 @@
+<form action="#" onsubmit="return false;">
+	<div class="row">
+		<div class="col-12">
+			<div class="form-text mt-0 mb-3">
+				Fields with <span class="text-danger">"*"</span> must be filled out.
+			</div>
+		</div>
+
+		<!-- category name & package name -->
+
+		<div class="col-12 mb-3 mb-sm-3">
+			<div class="row g-3">
+				<div class="col-md-6 col-lg-6 mb-3 mb-sm-3 mb-lg-4">
+					<label
+						for="inputPackageName"
+						class="form-label rounded fw-bold"
+						data-bs-toggle="tooltip"
+						data-bs-placement="top"
+						title="required"
+						aria-hidden="true"
+						>Package Name <span class="text-danger">*</span></label
+					>
+					<input
+						type="text"
+						name="inputPackageName"
+						id="inputPackageName"
+						class="form-control"
+						placeholder="EX: Light Vehicle"
+						required
+					/>
+					<div class="valid-feedback">Valid Value...!</div>
+					<div class="invalid-feedback">Invalid Package Name, Try Again!</div>
+				</div>
+
+				<div class="col-md-6 col-lg-6 mb-3 mb-sm-3 mb-lg-4">
+					<label
+						for="selectCategoryName"
+						class="form-label rounded fw-bold"
+						data-bs-toggle="tooltip"
+						data-bs-placement="top"
+						title="required"
+						aria-hidden="true"
+						>Select Category <span class="text-danger">*</span></label
+					>
+					<select
+						name="selectCategoryName"
+						id="selectCategoryName"
+						class="form-select"
+						required
+					>
+						<!-- categories will show here using js -->
+					</select>
+					<div class="valid-feedback">Valid Value...!</div>
+					<div class="invalid-feedback">Invalid Category Name, Try Again!</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- package name & Category name -->
+
+		<!-- PackageCost , Lesson counts -->
+
+		<div class="col-12 mb-3 mb-sm-3">
+			<div class="row g-3">
+				<div class="col-6 col-md-6 col-lg-6 mb-3 mb-sm-3 mb-lg-4">
+					<label
+						for="inputPackageCost"
+						class="form-label rounded fw-bold"
+						data-bs-toggle="tooltip"
+						data-bs-placement="top"
+						title="required"
+						aria-hidden="true"
+						>Package Cost <span class="text-danger">*</span></label
+					>
+					<input
+						type="text"
+						name="inputPackageCost"
+						id="inputPackageCost"
+						class="form-control"
+						placeholder="Rs 0.00"
+						required
+						maxlength="12"
+					/>
+					<div class="valid-feedback">Valid Value...!</div>
+					<div class="invalid-feedback">Invalid Package Cost, Try Again!</div>
+				</div>
+
+                <div class="col-6 col-md-6 col-lg-6 mb-3 mb-sm-3 mb-lg-4">
+					<label
+						for="inputLessonsCount"
+						class="form-label rounded fw-bold"
+						data-bs-toggle="tooltip"
+						data-bs-placement="top"
+						title="required"
+						aria-hidden="true"
+						>Lessons Count <span class="text-danger">*</span></label
+					>
+					<input
+						type="number"
+						name="inputLessonsCount"
+						id="inputLessonsCount"
+						class="form-control"
+						placeholder="0"
+						required
+                        min="0"
+					/>
+					<div class="valid-feedback">Valid Value...!</div>
+					<div class="invalid-feedback">Invalid Lessons Count, Try Again!</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- PackageCost , Lesson counts -->
+
+        <!-- package status -->
+
+        <div class="col-12 mb-3 mb-sm-3">
+			<div class="row g-3">
+                <div class="col-12 mb-3 mb-sm-3 mb-lg-4">
+					<label
+						for="selectPackageStatus"
+						class="form-label rounded fw-bold"
+						data-bs-toggle="tooltip"
+						data-bs-placement="top"
+						title="required"
+						aria-hidden="true"
+						>Select Package Status <span class="text-danger">*</span></label
+					>
+					<select
+						name="selectPackageStatus"
+						id="selectPackageStatus"
+						class="form-select"
+						required
+					>
+                        <option value="" selected disabled>Select Package Status</option>
+						<option value="Active">Active</option>
+                        <option value="Deactivate">Deactivate</option>
+					</select>
+					<div class="valid-feedback">Valid Value...!</div>
+					<div class="invalid-feedback">Invalid Package Status, Try Again!</div>
+				</div>
+            </div>
+		</div>
+
+        <!-- package status -->
+
+		<!-- Description -->
+
+		<div class="col-12">
+			<label
+				for="inputDescription"
+				class="form-label rounded fw-bold"
+				data-bs-toggle="tooltip"
+				data-bs-placement="top"
+				title="required"
+				aria-hidden="true"
+				>Description <span class="text-danger">*</span></label
+			>
+			<textarea
+				type="text"
+				class="form-control"
+				id="inputDescription"
+				name="inputDescription"
+				placeholder="Write Description..."
+				required
+			></textarea>
+			<div class="valid-feedback">Valid Value...!</div>
+			<div class="invalid-feedback">Invalid Description, Try Again!</div>
+		</div>
+
+		<!-- Description -->
+	</div>
+</form>
