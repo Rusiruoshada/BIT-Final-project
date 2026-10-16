@@ -18,7 +18,7 @@ export const loadPage = async (page) => {
 		pageTitle ? pageTitle.innerText = page.toUpperCase() : '';
 
 		// load the js page if its exits
-		const pageWithScript = ['notification','students']; // use this array to define what js pages there show network 404 page fail error not show on the console
+		const pageWithScript = ['notification','students','packages']; // use this array to define what js pages there show network 404 page fail error not show on the console
 
 		if (pageWithScript.includes(page)) {
 			
@@ -54,6 +54,7 @@ export const loadPage = async (page) => {
 };
 
 window.loadPage = loadPage;
+loadPage('students')
 
 window.setModal = async (modals, appendElement) => {
 	try {
