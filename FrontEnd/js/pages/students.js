@@ -1,3 +1,37 @@
+const studentTableData = [
+	{
+		id: 1001,
+		fullname: 'Amal Bandara',
+		contact: '071213213',
+		packages: [
+			{ id: 121, name: 'Car' },
+			{ id: 122, name: 'Bike' },
+		],
+		trialDateSet: true,
+		status: 'Active',
+	},
+	{
+		id: 1002,
+		fullname: 'Haritha Perera',
+		contact: '074213212',
+		packages: [
+			{ id: 121, name: 'Car' },
+		],
+		trialDateSet: false,
+		status: 'Active',
+	},
+	{
+		id: 1003,
+		fullname: 'Namal Rajapaksha',
+		contact: '075213123',
+		packages: [
+			{ id: 121, name: 'Heavy Vehicle' },
+		],
+		trialDateSet: true,
+		status: 'Active',
+	},
+];
+
 export const init = () => {
 	const packageSelectionModalOpenButtonElement = document.querySelector(
 		'#packageInstructionModalOpen',
@@ -12,13 +46,71 @@ export const init = () => {
 		const packageSelectionFormElement = document.querySelector(
 			'#packageSelectionForm',
 		);
-		console.log('inside packageSelectionModalOpenButtonElement');
+
 		// setModal is define using window in pageLoader so it can be call globally
-		window.setModal('studentPage/studentPackageModal', packageSelectionFormElement);
+		window.setModal(
+			'studentPage/studentPackageModal',
+			packageSelectionFormElement,
+		);
 	});
-};
 
+	// fill table data
 
+	const studentTableBodyElement = document.querySelector('#studentTableBody');
+
+	//fill the table with "-" if no data show
+	if (!studentTableData) {
+		tableBodyPackageDetailElement.innerHTML = `
+			<tr>
+				<td>-</td>
+				<td>-</td>
+				<td>-</td>
+				<td>-</td>
+				<td>-</td>
+				<td>-</td>
+				<td>-</td>
+			</tr>
+		`;
+	}
+
+	studentTableData.forEach((data,index) => {
+		const tr = document.createElement('tr');
+		const td1 = document.createElement('td');
+		const td2 = document.createElement('td');
+		const td3 = document.createElement('td');
+		const td4 = document.createElement('td');
+		const td5 = document.createElement('td');
+		const td6 = document.createElement('td');
+		const td7 = document.createElement('td');
+
+		td1.innerText = index+1;
+		td2.innerText = data.fullname;
+		td3.innerText = data.contact;
+
+		let categoryVals = '';
+		data.packages.forEach((val, index) => {
+			categoryVals += `${val.name}${data.packages.length != index + 1 ? ' / ' : ''}`;
+		});
+		td4.innerText = categoryVals;
+
+		
+		td5.innerHTML = data.trialDateSet
+			? `<i class='fa-solid fa-check text-success'></i>`
+			: `<i class='fa-solid fa-times text-danger'></i>`;
+		td6.innerText = data.status
+		td7.innerHTML = window.modifyColButtonsHtml;
+
+		tr.appendChild(td1);
+		tr.appendChild(td2);
+		tr.appendChild(td3);
+		tr.appendChild(td4);
+		tr.appendChild(td5);
+		tr.appendChild(td6);
+		tr.appendChild(td7);
+
+		studentTableBodyElement.appendChild(tr);
+	});
+};;
 
 // document.addEventListener('DOMContentLoaded', () => {
 // 	const catBike = document.getElementById('catBike');
