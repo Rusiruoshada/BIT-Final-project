@@ -5,7 +5,7 @@
     --bg-primary-hover: #0b4f7a;
 	--text-white:#fff;
 }
-/* searchbar for table filter */
+/* searchbar for table filter ======================================================== */
 
 .searchBarFroTable .searchIcon{
 	top: 8px;
@@ -25,7 +25,7 @@
 	border-color: var(--bg-primary)!important;
 }
 
-/* searchbar for table filter */
+/* searchbar for table filter ======================================================== */
 
 .text-primary{
 	color:var(--bg-primary)!important;
@@ -43,15 +43,14 @@
 	color: var(--bg-primary)!important;
 	border: 0;
 }
+/* buttons =========================================================== */
 
-.btn{
-	border: 0!important;;
-}
-
+/* primary-btn */
 .btn.btn-primary{
 	box-shadow: 1px 1px 5px #0d4365!important;
 	background-color: var(--bg-primary)!important;
 	color: var(--text-white);
+	border: 0!important;
 }
 
 
@@ -59,7 +58,14 @@
 	box-shadow: 1px 1px 8px #0d4365!important;
 	background-color: var(--bg-primary-hover)!important;
 	color: var(--text-white);
+	border: 0!important;
 }
+/* primary-btn */
+
+
+
+
+/* buttons =========================================================== */
 
 .border-primary{
 	border-width: 2px;
