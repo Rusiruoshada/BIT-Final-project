@@ -1,0 +1,227 @@
+<div class="container-fluid">
+	<div class="card border-0 shadow">
+		<div class="p-4">
+			<div class="d-flex justify-content-between align-items-center mb-4">
+				<div>
+					<!-- search bar  -->
+					<div class="position-relative searchBarFroTable">
+						<span class="position-absolute searchIcon">
+							<i class="fa-solid fa-search text-secondary"></i>
+						</span>
+						<input
+							type="text"
+							name="searchInput"
+							id="searchInput"
+							class="form-control shadow-none searchInput"
+							placeholder="Search here..."
+						/>
+					</div>
+				</div>
+                <div class="d-flex gap-2">
+                    <button
+                        type="button"
+                        class="btn btn-primary"
+                        id="addNewRoleModalOpenButton"
+                        data-bs-toggle="modal"
+                        data-bs-target="#addNewRoleModal"
+                    >
+                        <i class="fa-solid fa-plus"></i>
+                        New Role
+                    </button>
+                    <button
+                        type="button"
+                        class="btn btn-primary"
+                        id="addNewPermissionButton"
+                        data-bs-toggle="modal"
+                        data-bs-target="#addNewPermissionFormModal"
+                    >
+                        <i class="fa-solid fa-plus"></i>
+                        New Permission
+                    </button>
+                </div>
+			</div>
+
+			<!-- add new role modal -->
+
+			<div
+				class="modal fade"
+				id="addNewRoleModal"
+				aria-hidden="true"
+				data-bs-backdrop="static"
+				data-bs-keyboard="false"
+				aria-labelledby="addNewRoleModalLabel"
+				tabindex="-1"
+			>
+				<div
+					class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-lg modal-fullscreen-sm-down"
+				>
+					<div class="modal-content">
+						<div class="modal-header">
+							<h4 class="modal-title fs-5" id="addNewRoleModalLabel">
+								Add New Role
+							</h4>
+							<button
+								type="button"
+								class="btn-close"
+								data-bs-dismiss="modal"
+								aria-label="Close"
+							></button>
+						</div>
+						<div class="modal-body">
+							<div id="addNewRoleModalForm">
+								<!-- Add New Role body will load here -->
+							</div>
+						</div>
+						<div class="modal-footer">
+							<button
+								type="reset"
+								class="btn btn-outline-secondary"
+								id="addNewRoleResetButton"
+							>
+								Reset
+							</button>
+							<button
+								type="button"
+								class="btn btn-primary"
+								id="addNewRoleSubmitButton"
+							>
+								Confirm
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- add new role modal -->
+
+			<!-- role module permission modal -->
+
+			<div
+				class="modal fade"
+				id="roleModulePermissionModal"
+				aria-hidden="true"
+				data-bs-backdrop="static"
+				data-bs-keyboard="false"
+				aria-labelledby="roleModulePermissionModalLabel"
+				tabindex="-1"
+			>
+				<div
+					class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-lg modal-fullscreen-sm-down"
+				>
+					<div class="modal-content">
+						<div class="modal-header">
+							<h4 class="modal-title fs-5" id="roleModulePermissionModalLabel">
+								Module Permissions
+							</h4>
+							<button
+								type="button"
+								class="btn-close"
+								data-bs-dismiss="modal"
+								aria-label="Close"
+							></button>
+						</div>
+						<div class="modal-body">
+							<div id="roleModulePermissionModalForm">
+								<!-- role module permissions body will load here -->
+							</div>
+						</div>
+						<div class="modal-footer">
+							<button
+								type="button"
+								class="btn btn-outline-secondary"
+								data-bs-toggle="modal"
+								data-bs-target="#addNewRoleModal"
+							>
+								Back
+							</button>
+							<button
+								type="button"
+								class="btn btn-primary"
+								id="roleModulePermissionModalSaveButton"
+								data-bs-toggle="modal"
+								data-bs-target="#addNewRoleModal"
+							>
+								Save
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- role module permission modal -->
+
+
+            <!-- role table goes here -->
+
+            <div class="card-body p-0">
+				<div class="table-responsive">
+					<table
+						class="table table-hover text-center align-middle bg-transparent"
+					>
+						<thead>
+							<tr>
+								
+								<th scope="col" class="text-center align-middle">
+									Role Name
+								</th>
+								<th scope="col" class="text-center align-middle">
+									Permissions
+								</th>
+								<th scope="col" class="text-center align-middle">
+									Select Permission
+								</th>
+                                <th scope="col" class="text-center align-middle">
+									Insert Permission
+								</th>
+                                <th scope="col" class="text-center align-middle">
+									Update Permission
+								</th>
+                                <th scope="col" class="text-center align-middle">
+									Delete Permission
+								</th>
+								
+								<th scope="col" class="text-center align-middle">Status</th>
+								<th scope="col" class="text-center align-middle">Modify</th>
+							</tr>
+						</thead>
+						<tbody id="roleDetailTableBody">
+							<!-- data will fill using js -->
+						</tbody>
+					</table>
+				</div>
+			</div>
+
+            <!-- role table goes here -->
+
+             <!-- card footer pagination and entries -->
+
+			<div class="d-flex justify-content-between align-items-center mt-4">
+				<div class="form-text">Showing 1 to 9 of 9 entries</div>
+				<div class="btn-group gap-2">
+					<nav aria-label="table navigation">
+						<ul class="pagination text-primary">
+							<li class="page-item">
+								<a class="page-link" href="#" aria-label="Previous">
+									<span aria-hidden="true">&laquo;</span>
+								</a>
+							</li>
+							<li class="page-item">
+								<a class="page-link active" href="#">1</a>
+							</li>
+							<li class="page-item"><a class="page-link" href="#">2</a></li>
+							<li class="page-item"><a class="page-link" href="#">3</a></li>
+							<li class="page-item">
+								<a class="page-link" href="#" aria-label="Next">
+									<span aria-hidden="true">&raquo;</span>
+								</a>
+							</li>
+						</ul>
+					</nav>
+				</div>
+			</div>
+
+            <!-- card footer pagination and entries -->
+
+		</div>
+	</div>
+</div>
