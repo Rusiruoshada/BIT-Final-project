@@ -75,8 +75,8 @@ const sidebarNavigationItems = [
 sidebarNavigationItems.forEach((item) => {
 	const page = item.itemName
 		.toLowerCase()
-		.replaceAll(' ', '-')
-		.replaceAll('&', '');
+		.replaceAll(' ', '')
+		.replaceAll('&', '-');
 
 	// create desktop navigation links
 	const sidebarNavigationItem = appendChildForElement(
@@ -270,7 +270,7 @@ window.fixAriaHiddenModalIssus = (modalName = '') => {
 // ================================================================================
 
 window.openNotificationModal = (notificationId) => {
-	// use global notify or fallback if notify is available
+	// use global notify or  if notify is not available set as []
 	const notifications = window.notify || [];
 
 	if (notificationId != null && notificationId <= notify.length) {
@@ -324,4 +324,53 @@ fixAriaHiddenModalIssus('notificationModal');
 
 // ================================================================================
 // global notification modal handler 
+// ================================================================================
+
+
+// ================================================================================
+// Table Modification buttons group
+// ================================================================================
+
+
+window.modifyColButtonsHtml = `
+	<div class="dropdown dropstart">
+		<a
+			href="#"
+			class="btn btn-sm"
+			role="button"
+			data-bs-toggle="dropdown"
+			aria-expanded="false"
+		>
+			<i class="fa-solid fa-gear text-black"></i>
+		</a>
+		<div class="dropdown-menu p-2">
+			<div class="btn-group">
+				<button
+					type="button"
+					class="btn btn-outline-info fw-medium btn-sm"
+					id="tableModificationViewButton"
+				>
+					View
+				</button>
+				<button
+					type="button"
+					class="btn btn-outline-warning fw-medium btn-sm"
+					id="tableModificationUpdateButton"
+				>
+					Update
+				</button>
+				<button
+					type="button"
+					class="btn btn-outline-danger fw-medium btn-sm"
+					id="tableModificationDeleteButton"
+				>
+					Delete
+				</button>
+			</div>
+		</div>
+	</div>
+`;
+
+// ================================================================================
+// Table Modification buttons group
 // ================================================================================
