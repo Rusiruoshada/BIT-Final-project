@@ -1,0 +1,173 @@
+<form action="#" onsubmit="return false;" method="post">
+	<div class="row">
+		<div class="col-12">
+			<div class="form-text mt-0 mb-3">
+				Fields with <span class="text-danger">"*"</span> must be filled out.
+			</div>
+		</div>
+
+		<!-- role name -->
+		<div class="col-12 mb-3 mb-sm-3">
+			<div class="row g-3">
+				<div class="col-12 mb-3 mb-sm-3 mb-lg-4">
+					<label
+						for="inputRoleName"
+						class="form-label rounded fw-bold"
+						data-bs-toggle="tooltip"
+						data-bs-placement="top"
+						title="required"
+						aria-hidden="true"
+						>Role Name <span class="text-danger">*</span></label
+					>
+					<input
+						type="text"
+						name="inputRoleName"
+						id="inputRoleName"
+						class="form-control"
+						placeholder="Enter Role Name"
+						required
+					/>
+					<div class="valid-feedback">Valid Value...!</div>
+					<div class="invalid-feedback">Invalid Role Name, Try Again!</div>
+				</div>
+			</div>
+		</div>
+		<!-- role name -->
+
+		<!-- role status , module permission -->
+		<div class="col-12 mb-3 mb-sm-3">
+			<div class="row g-3">
+				<div class="col-6 mb-3 mb-sm-3 mb-lg-4">
+					<label
+						for="selectRoleStatus"
+						class="form-label rounded fw-bold"
+						data-bs-toggle="tooltip"
+						data-bs-placement="top"
+						title="required"
+						aria-hidden="true"
+						>Role Status <span class="text-danger">*</span></label
+					>
+					<select
+						name="selectRoleStatus"
+						id="selectRoleStatus"
+						class="form-select"
+						required
+					>
+						<option value="" selected disabled>Select Role Status</option>
+						<option value="Active">Active</option>
+						<option value="Deactivate">Deactivate</option>
+					</select>
+					<div class="valid-feedback">Valid Value...!</div>
+					<div class="invalid-feedback">Invalid Role Status, Try Again!</div>
+				</div>
+				<div class="col-6 mb-3 mb-sm-3 mb-lg-4">
+					<label
+						for="selectRoleModulePermissions"
+						class="form-label rounded fw-bold"
+						data-bs-toggle="tooltip"
+						data-bs-placement="top"
+						title="required"
+						aria-hidden="true"
+						>Role Module Permissions <span class="text-danger">*</span></label
+					>
+					<button
+						type="button"
+                        id="roleModulePermissionModalOpenButton"
+						class="btn fw-medium border-1 border-secondary"
+						data-bs-toggle="modal"
+						data-bs-target="#roleModulePermissionModal"
+					>
+						Open Module Permissions
+					</button>
+				</div>
+			</div>
+		</div>
+		<!-- role status , module permission -->
+
+		<!-- role CRUD permission -->
+
+		<div class="col-12 mb-3 mb-sm-3">
+			<div class="row g-3">
+				<div class="col-12">
+					<label
+						for="selectRolePermission"
+						class="form-label rounded fw-bold"
+						data-bs-toggle="tooltip"
+						data-bs-placement="top"
+						title="required"
+						aria-hidden="true"
+						>Select Role Permission <span class="text-danger">*</span></label
+					>
+				</div>
+			</div>
+			<div class="row g-3">
+				<div class="col-6 col-md-3 col-lg-3">
+					<input
+						type="checkbox"
+						name="selectRolePermission"
+						id="selectPermission"
+						class="btn-check"
+						value="Select Permission"
+						placeholder="Grant Select Permission"
+						autocomplete="off"
+					/>
+					<label
+						for="selectPermission"
+						class="btn btn-outline-success fw-medium"
+						>Grant Select Permission</label
+					>
+				</div>
+				<div class="col-6 col-md-3 col-lg-3">
+					<input
+						type="checkbox"
+						name="selectRolePermission"
+						id="insertPermission"
+						class="btn-check"
+						value="Insert Permission"
+						placeholder="Grant Insert Permission"
+						autocomplete="off"
+					/>
+					<label
+						for="insertPermission"
+						class="btn btn-outline-success fw-medium"
+						>Grant Insert Permission</label
+					>
+				</div>
+				<div class="col-6 col-md-3 col-lg-3">
+					<input
+						type="checkbox"
+						name="selectRolePermission"
+						id="updatePermission"
+						class="btn-check"
+						value="Update Permission"
+						placeholder="Grant Update Permission"
+						autocomplete="off"
+					/>
+					<label
+						for="updatePermission"
+						class="btn btn-outline-success fw-medium"
+						>Grant Update Permission</label
+					>
+				</div>
+				<div class="col-6 col-md-3 col-lg-3">
+					<input
+						type="checkbox"
+						name="selectRolePermission"
+						id="deletePermission"
+						class="btn-check"
+						value="Delete Permission"
+						placeholder="Grant Delete Permission"
+						autocomplete="off"
+					/>
+					<label
+						for="deletePermission"
+						class="btn btn-outline-success fw-medium"
+						>Grant Delete Permission</label
+					>
+				</div>
+			</div>
+		</div>
+
+		<!-- role CRUD permission -->
+	</div>
+</form>
