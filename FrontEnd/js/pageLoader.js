@@ -1,7 +1,7 @@
 const appContent = document.querySelector('#app-content');
 
 // explicitly tell loadPage() as global -> otherwise its show error loadPage() not shows
-export const loadPage = async (page) => {
+window.loadPage = async (page) => {
 	try {
 		// load the html page
 		const response = await fetch(`./pages/${page}.html`);
@@ -15,10 +15,10 @@ export const loadPage = async (page) => {
 		
 		// set page title to loading page name
 		const pageTitle = document.querySelector('#navbarPageTitle');
-		pageTitle ? pageTitle.innerText = page.toUpperCase() : '';
+		pageTitle ? pageTitle.innerText = page.replaceAll('-',' & ').toUpperCase() : '';
 
 		// load the js page if its exits
-		const pageWithScript = ['notification','students','packages']; // use this array to define what js pages there show network 404 page fail error not show on the console
+		const pageWithScript = ['notification','students','packages','role-permission']; // use this array to define what js pages there show network 404 page fail error not show on the console
 
 		if (pageWithScript.includes(page)) {
 			
@@ -53,8 +53,8 @@ export const loadPage = async (page) => {
 	}
 };
 
-window.loadPage = loadPage;
-loadPage('students')
+
+loadPage('role-permission')
 
 window.setModal = async (modals, appendElement) => {
 	try {
@@ -69,6 +69,7 @@ window.setModal = async (modals, appendElement) => {
 
 		const html = await response.text();
 		appendElement.innerHTML = html;
+		
 	} catch (error) {
 		console.error('Error loading modal:', error);
 		// Optional fallback message so the user isn't left looking at a broken state
