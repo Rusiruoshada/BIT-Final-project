@@ -22,13 +22,13 @@
 	<body class="bg-body-secondary bg-opacity-50">
 		<div class="d-flex min-vh-100">
 			<aside
-				class="sidebar-width d-none d-lg-block flex-shrink-0"
+				class="d-none d-lg-block flex-shrink-0 sidebar-width"
 				aria-label="Main navigation"
 			>
-				<div class="sidebar vh-100 p-3">
+				<div class="p-3 vh-100 overflow-y-auto sidebar" style="scrollbar-width: none;">
 					<!-- sidebar logo  -->
-					<header class="sidebar-header mb-5">
-						<h5 class="sidebar-title fw-bold text-white m-0" id="sidebarLabel">
+					<header class="mb-5 sidebar-header">
+						<h5 class="m-0 fw-bold text-white sidebar-title" id="sidebarLabel">
 							<i class="fa-solid fa-motorcycle"></i>
 							Malinda
 						</h5>
@@ -38,8 +38,8 @@
 					<!-- sidebar logo  -->
 
 					<!-- Sidebar Navigation items -->
-					<nav class="sidebar-body p-0 text-white">
-						<ul class="list-unstyled m-0 p-0" id="sidebar-navigation">
+					<nav class="p-0 text-white sidebar-body">
+						<ul class="m-0 p-0 list-unstyled" id="sidebar-navigation">
 							<!--navbar items fill with js here -->
 						</ul>
 					</nav>
@@ -51,37 +51,37 @@
 				<!-- Top Navbar                     -->
 				<header>
 					<nav
-						class="navbar navbar-light bg-white p-3"
+						class="p-3 navbar navbar-light bg-white"
 						aria-label="Top navigation"
 					>
 						<div class="container-fluid">
 							<!-- Left Side -->
-							<div class="d-flex align-items-center gap-3">
+							<div class="d-flex gap-3 align-items-center">
 								<!-- Mobile Sidebar Toggle -->
 								<button
 									type="button"
-									class="navbar-toggler p-1 border-1 d-lg-none"
+									class="d-lg-none p-1 navbar-toggler border-1"
 									data-bs-toggle="offcanvas"
 									data-bs-target="#offcanvasNavbar"
 									aria-controls="offcanvasNavbar"
 									aria-expanded="false"
 									aria-label="Toggle navigation"
 								>
-									<span class="navbar-toggler-icon h6 m-0"></span>
+									<span class="m-0 navbar-toggler-icon h6"></span>
 								</button>
 
 								<!-- Page Title -->
-								<h6 class="navbar-brand m-0 fw-bold" id="navbarPageTitle"></h6>
+								<h6 class="m-0 navbar-brand fw-bold" id="navbarPageTitle"></h6>
 							</div>
 							<!-- Left Side -->
 
 							<!-- Right Side -->
-							<div class="d-flex align-items-center gap-2">
+							<div class="d-flex gap-2 align-items-center">
 								<!-- Notification Button -->
 								<div class="dropdown">
 									<button
 										type="button"
-										class="btn-bell rounded-circle btn text-secondary bg-body-secondary bg-opacity-50 position-relative"
+										class="btn-bell btn rounded-circle text-secondary bg-body-secondary bg-opacity-50 position-relative"
 										aria-label="Notifications"
 										data-bs-toggle="dropdown"
 										aria-expanded="false"
@@ -92,7 +92,7 @@
 										></i>
 
 										<span
-											class="notify-number rounded-circle text-white fw-bold bg-danger p-1"
+											class="p-1 rounded-circle text-white fw-bold bg-danger notify-number"
 											id="notification-count"
 										>
 											<!-- notification count will set by backend -->
@@ -123,7 +123,7 @@
 								<div class="dropdown">
 									<button
 										type="button"
-										class="btn border-0 d-flex align-items-center gap-2"
+										class="d-flex gap-2 btn border-0 align-items-center"
 										data-bs-toggle="dropdown"
 										aria-expanded="false"
 									>
@@ -144,7 +144,7 @@
 										<li>
 											<a
 												href="#"
-												class="dropdown-item d-flex gap-1 align-items-center text-secondary dropdown-menu-item-hover"
+												class="d-flex gap-1 dropdown-item dropdown-menu-item-hover align-items-center text-secondary"
 											>
 												<i class="fa-solid fa-user"></i>
 												<span>Profile</span>
@@ -154,7 +154,7 @@
 										<li>
 											<a
 												href="#"
-												class="dropdown-item d-flex gap-1 align-items-center text-secondary dropdown-menu-item-hover"
+												class="d-flex gap-1 dropdown-item dropdown-menu-item-hover align-items-center text-secondary"
 											>
 												<i class="fa-solid fa-arrow-right-from-bracket"></i>
 												<span>Logout</span>
@@ -170,7 +170,7 @@
 							<!-- Mobile Offcanvas Sidebar      -->
 							
 							<div
-								class="offcanvas offcanvas-start d-lg-none navbar-offcanvas"
+								class="d-lg-none offcanvas offcanvas-start navbar-offcanvas"
 								id="offcanvasNavbar"
 								tabindex="-1"
 								data-bs-scroll="true"
@@ -200,9 +200,9 @@
 								</div>
 
 								<!-- Offcanvas Navigation -->
-								<div class="offcanvas-body p-3 text-white fw-bold">
+								<div class="p-3 offcanvas-body text-white fw-bold" style="scrollbar-width: none;">
 									<nav aria-label="Mobile main navigation">
-										<ul class="list-unstyled m-0 p-0" id="offcanvas-navigation">
+										<ul class="m-0 p-0 list-unstyled" id="offcanvas-navigation">
 											<!--ITEMs FILL WITH JS FILE -->
 										</ul>
 									</nav>
