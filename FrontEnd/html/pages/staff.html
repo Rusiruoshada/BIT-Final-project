@@ -1,0 +1,508 @@
+<div class="container-fluid">
+	<div class="card border-0 shadow">
+		<div class="p-4">
+			<div class="d-flex mb-4 justify-content-between align-items-center">
+				<div>
+					<!-- search bar  -->
+					<div class="position-relative searchBarFroTable">
+						<span class="position-absolute searchIcon">
+							<i class="text-secondary fa-solid fa-search"></i>
+						</span>
+						<input
+							type="text"
+							name="searchInput"
+							id="searchInput"
+							class="form-control shadow-none searchInput"
+							placeholder="Search here..."
+						/>
+					</div>
+				</div>
+
+				<button
+					type="button"
+					class="btn btn-primary"
+					id="newStaffbutton"
+					data-bs-toggle="modal"
+					data-bs-target="#staffDetailForm"
+				>
+					<i class="fa-solid fa-plus"></i>
+					New Staff Member
+                </button>
+			</div>
+
+
+            <!-- add new Staff member modal here -->
+
+            <div
+				class="modal fade"
+				tabindex="-1"
+				id="staffDetailForm"
+				aria-labelledby="staffDetailFormLabel"
+				aria-hidden="true"
+				data-bs-backdrop="static"
+				data-bs-keyboard="false"
+			>
+				<div
+					class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-lg modal-fullscreen-sm-down"
+				>
+					<div class="modal-content">
+						<div class="modal-header">
+							<h4 class="modal-title">Add a New Staff Member</h4>
+							<button
+								type="button"
+								class="btn-close"
+								data-bs-dismiss="modal"
+								aria-label="Close"
+							></button>
+						</div>
+
+						<div class="modal-body">
+							<form action="#" onsubmit="return false;">
+								<!-- not give user to just type fake data and submit  -->
+								<div class="row">
+									<div class="col-12 d-flex justify-content-center">
+										<button type="button" class="btn position-relative">
+											<div
+												class="d-flex border-2 rounded-pill border-primary align-items-center"
+												style="height: 60px; width: 60px"
+												data-bs-toggle="tooltip"
+												data-bs-title="Upload a Profile Picture"
+											>
+												<i
+													class="text-primary fa-solid fa-image"
+													style="font-size: 34px"
+												></i>
+											</div>
+
+											<i
+												class="text-primary fw-bold position-absolute bottom-0 fa-solid fa-camera"
+											></i>
+										</button>
+									</div>
+								</div>
+
+								<!-- Personal Information section -->
+								<div class="row">
+									<div class="col-12">
+										<p class="fw-bold h5">Personal Information :</p>
+										<div class="mt-0 mb-3 form-text">
+											Fields with <span class="text-danger">"*"</span> must be
+											filled out.
+										</div>
+									</div>
+
+									<!-- full name & calling name -->
+									<div class="col-12 mb-3 mb-sm-3">
+										<div class="row g-3">
+											<div class="col-md-6 col-lg-6 mb-3 mb-sm-3 mb-lg-4">
+												<label
+													for="inputFullname"
+													class="form-label rounded fw-bold"
+													data-bs-toggle="tooltip"
+                                                    data-bs-title="Enter Valid Fullname"
+													data-bs-placement="top"
+                                                    
+													title="required"
+													aria-hidden="true"
+													>Full Name <span class="text-danger">*</span></label
+												>
+												<input
+													type="text"
+													name="inputFullname"
+													id="inputFullname"
+													class="form-control"
+													placeholder="EX: Haritha Bandara"
+													required
+												/>
+												<div class="valid-feedback">Valid Value...!</div>
+												<div class="invalid-feedback">
+													Invalid Full Name, Try Again!
+												</div>
+											</div>
+
+											<div class="col-md-6 col-lg-6 mb-3 mb-sm-3 mb-lg-4">
+												<label
+													for="selectCallingName"
+													class="form-label rounded fw-bold"
+													data-bs-toggle="tooltip"
+													data-bs-placement="top"
+													title="required"
+													aria-hidden="true"
+													>Calling Name
+													<span class="text-danger">*</span></label
+												>
+												<select
+													name="selectCallingName"
+													id="selectCallingName"
+													class="form-select"
+													required
+													disabled
+												></select>
+												<div class="valid-feedback">Valid Value...!</div>
+												<div class="invalid-feedback">
+													Invalid Calling Name, Try Again!
+												</div>
+											</div>
+										</div>
+									</div>
+									<!-- full name & calling name -->
+
+									<!-- NIC , birthday , age , gender -->
+									<div class="col-12 mb-3 mb-sm-3">
+										<div class="row g-3">
+											<div class="col-md-6 col-lg-3 mb-3 mb-sm-3 mb-lg-4">
+												<label
+													for="inputNIC"
+													class="form-label rounded fw-bold"
+													data-bs-toggle="tooltip"
+													data-bs-placement="top"
+													title="required"
+													aria-hidden="true"
+													>NIC <span class="text-danger">*</span></label
+												>
+												<input
+													type="text"
+													name="inputNIC"
+													id="inputNIC"
+													class="form-control"
+													placeholder="EX: Enter Valid NIC"
+													required
+													maxlength="12"
+												/>
+												<div class="valid-feedback">Valid Value...!</div>
+												<div class="invalid-feedback">
+													Invalid NIC, Try Again!
+												</div>
+											</div>
+
+											<div class="col-md-6 col-lg-3 mb-3 mb-sm-3 mb-lg-4">
+												<div>
+													<label
+														for="selectGender"
+														class="form-label rounded fw-bold"
+														data-bs-toggle="tooltip"
+														data-bs-placement="top"
+														title="required"
+														aria-hidden="true"
+														>Gender <span class="text-danger">*</span></label
+													>
+												</div>
+												<div class="row" id="selectGender">
+													<div class="form-check form-check-inline">
+														<input
+															type="radio"
+															name="inputGender"
+															id="radioMale"
+															value="Male"
+															disabled
+														/>
+														<label for="radioMale" class="fw-bold">Male</label>
+													</div>
+													<div class="form-check form-check-inline">
+														<input
+															type="radio"
+															name="inputGender"
+															id="radioFemale"
+															value="Female"
+															disabled
+														/>
+														<label for="radioFemale" class="fw-bold"
+															>Female</label
+														>
+													</div>
+												</div>
+											</div>
+
+											<div class="col-md-6 col-lg-3 mb-3 mb-sm-3 mb-lg-4">
+												<label
+													for="inputDOB"
+													class="form-label rounded fw-bold"
+													data-bs-toggle="tooltip"
+													data-bs-placement="top"
+													title="required"
+													>Date of birth
+													<span class="text-danger">*</span>
+												</label>
+												<input
+													type="date"
+													class="form-control"
+													name="inputDOB"
+													id="inputDOB"
+													disabled
+												/>
+												<div class="valid-feedback">Valid Value...!</div>
+												<div class="invalid-feedback">
+													Invalid Birth Date, Try Again!
+												</div>
+											</div>
+
+											<div class="col-md-6 col-lg-3 mb-3 mb-sm-3 mb-lg-4">
+												<label
+													for="inputAge"
+													class="form-label rounded fw-bold"
+													data-bs-toggle="tooltip"
+													data-bs-placement="top"
+													title="required"
+													aria-hidden="true"
+													>Age <span class="text-danger">*</span></label
+												>
+												<input
+													type="text"
+													name="inputAge"
+													id="inputAge"
+													class="form-control"
+													placeholder="Enter NIC First"
+													required
+													disabled
+													maxlength="10"
+												/>
+												<div class="valid-feedback">Valid Value...!</div>
+												<div class="invalid-feedback">
+													Invalid Age, Try Again!
+												</div>
+											</div>
+										</div>
+									</div>
+									<!-- NIC , birthday , age , gender -->
+
+									<!-- mobile number , civil status, role -->
+									<div class="col-12 mb-3 mb-sm-3">
+										<div class="row g-3">
+											<div class="col-md-4 col-lg-4 mb-3 mb-sm-3 mb-lg-4">
+												<label
+													for="inputMobileNumber"
+													class="form-label rounded fw-bold"
+													data-bs-toggle="tooltip"
+													data-bs-placement="top"
+													title="required"
+													aria-hidden="true"
+													>Mobile Number
+													<span class="text-danger">*</span></label
+												>
+												
+
+												<input
+													type="text"
+													name="inputMobileNumber"
+													id="inputMobileNumber"
+													class="form-control"
+													placeholder="EX: 072 231 1231"
+													required
+													maxlength="10"
+												/>
+
+												<div class="valid-feedback">Valid Value...!</div>
+												<div class="invalid-feedback">
+													Invalid Mobile Number, Try Again!
+												</div>
+											</div>
+
+											<div class="col-md-4 col-lg-4 mb-3 mb-sm-3 mb-lg-4">
+												<label
+													for="selectCivilStatus"
+													class="form-label rounded fw-bold"
+													data-bs-toggle="tooltip"
+													data-bs-placement="top"
+													title="required"
+													aria-hidden="true"
+													>Civil Status
+													<span class="text-danger">*</span></label
+												>
+												<select
+													name="selectCivilStatus"
+													id="selectCivilStatus"
+													class="form-select"
+													required
+												>
+													<option value="" selected disabled>
+														Choose Civil Status
+													</option>
+													<option value="Married">Married</option>
+													<option value="Single">Single</option>
+												</select>
+											</div>
+
+                                            <div class="col-md-4 col-lg-4 mb-3 mb-sm-3 mb-lg-4">
+												<label
+													for="selectRole"
+													class="form-label rounded fw-bold"
+													data-bs-toggle="tooltip"
+													data-bs-placement="top"
+													title="required"
+													aria-hidden="true"
+													>Role
+													<span class="text-danger">*</span></label
+												>
+												<select
+													name="selectRole"
+													id="selectRole"
+													class="form-select"
+													required
+												>
+												</select>
+											</div>
+										</div>
+									</div>
+									<!-- mobile number , civil status, role -->
+
+									<!-- address -->
+									<div class="col-12">
+										<label
+											for="inputAddress"
+											class="form-label rounded fw-bold"
+											data-bs-toggle="tooltip"
+											data-bs-placement="top"
+											title="required"
+											aria-hidden="true"
+											>Address <span class="text-danger">*</span></label
+										>
+										<textarea
+											type="text"
+											class="form-control"
+											id="inputAddress"
+											name="inputAddress"
+											placeholder="EX: No.231/B Kadawatha road,Kalubowila, Dehiwala"
+											required
+										></textarea>
+										<div class="valid-feedback">Valid Value...!</div>
+										<div class="invalid-feedback">
+											Invalid Address, Try Again!
+										</div>
+									</div>
+									<!-- address -->
+								</div>
+								<!-- Personal Information section -->
+
+								<!-- Necessary document upload section -->
+								<div class="row mt-5 mb-4">
+									<div class="col-12">
+										<div>
+											<p class="fw-bold h5">Necessary Document :</p>
+										</div>
+
+										<div class="row mb-3">
+											<!-- upload the document -->
+											<div class="col-md-6 col-lg-6">
+												<label
+													for="inputUploadMedical"
+													class="form-label rounded fw-bold"
+													data-bs-toggle="tooltip"
+													data-bs-placement="top"
+													title="required"
+													aria-hidden="true"
+													>Upload Medical
+													<span class="text-danger">*</span></label
+												>
+												<input
+													type="file"
+													name="inputUploadMedical"
+													id="inputUploadMedical"
+													class="form-control"
+													accept=".pdf, .png, .jpeg, .jpg"
+													required
+												/>
+												<div class="valid-feedback">Valid Value...!</div>
+												<div class="invalid-feedback">
+													Invalid Document, Try Again!
+												</div>
+											</div>
+											<!-- upload the document -->
+										</div>
+									</div>
+								</div>
+								<!-- Necessary document upload section -->
+							</form>
+						</div>
+
+						<!-- reset button have to manually clear Fields -->
+						<!-- continue , reset buttons -->
+						<div class="modal-footer">
+							<div class="row">
+								<div class="col-12">
+									<div class="row">
+										<div class="col-12 text-end">
+											<button
+												type="reset"
+												class="btn btn-reset btn-outline-secondary fw-bold"
+											>
+												Reset
+											</button>
+
+											<button
+												type="button"
+												class="btn btn-primary fw-bold"
+												data-bs-target="#packageInstructionModal"
+												data-bs-toggle="modal"
+											>
+												Continue
+											</button>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- continue , reset buttons -->
+					</div>
+				</div>
+			</div>
+
+            <!-- add new Staff member modal here -->
+
+
+            <!-- staff detail table -->
+			<div class="p-0 card-body">
+				<div class="table-responsive">
+					<table
+						class="table table-hover text-center align-middle bg-transparent"
+					>
+						<thead>
+							<tr>
+								<th scope="col" class="text-center align-middle">#</th>
+								<th scope="col" class="text-center align-middle">Full name</th>
+								<th scope="col" class="text-center align-middle">Contact Number</th>
+								<th scope="col" class="text-center align-middle">
+									NIC
+								</th>
+								<th scope="col" class="text-center align-middle">
+									Role
+								</th>
+								<th scope="col" class="text-center align-middle">
+									Status
+								</th>
+								<th scope="col" class="text-center align-middle">Modify</th>
+							</tr>
+						</thead>
+						<tbody id="staffTableBody">
+							
+						</tbody>
+					</table>
+				</div>
+				<div class="d-flex mt-4 justify-content-between align-items-center">
+					<div class="form-text">Showing 1 to 9 of 9 entries</div>
+					<div class="gap-2 btn-group">
+						<nav aria-label="table navigation">
+							<ul class="pagination text-primary">
+								<li class="page-item">
+									<a class="page-link" href="#" aria-label="Previous">
+										<span aria-hidden="true">&laquo;</span>
+									</a>
+								</li>
+								<li class="page-item">
+									<a class="page-link active" href="#">1</a>
+								</li>
+								<li class="page-item"><a class="page-link" href="#">2</a></li>
+								<li class="page-item"><a class="page-link" href="#">3</a></li>
+								<li class="page-item">
+									<a class="page-link" href="#" aria-label="Next">
+										<span aria-hidden="true">&raquo;</span>
+									</a>
+								</li>
+							</ul>
+						</nav>
+					</div>
+				</div>
+			</div>
+			<!-- staff detail table -->
+		</div>
+	</div>
+</div>
