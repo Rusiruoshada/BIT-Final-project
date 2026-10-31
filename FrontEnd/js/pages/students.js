@@ -7,27 +7,23 @@ const studentTableData = [
 			{ id: 121, name: 'Car' },
 			{ id: 122, name: 'Bike' },
 		],
-		trialDateSet: true,
+		trialDateSet: { id: 1, date: '2026-12-05' },
 		status: 'Active',
 	},
 	{
 		id: 1002,
 		fullname: 'Haritha Perera',
 		contact: '074213212',
-		packages: [
-			{ id: 121, name: 'Car' },
-		],
-		trialDateSet: false,
+		packages: [{ id: 121, name: 'Car' }],
+		trialDateSet: { id: 2, date: '2026-12-15' },
 		status: 'Active',
 	},
 	{
 		id: 1003,
 		fullname: 'Namal Rajapaksha',
 		contact: '075213123',
-		packages: [
-			{ id: 121, name: 'Heavy Vehicle' },
-		],
-		trialDateSet: true,
+		packages: [{ id: 121, name: 'Heavy Vehicle' }],
+		trialDateSet: '',
 		status: 'Active',
 	},
 ];
@@ -55,62 +51,82 @@ export const init = () => {
 	});
 
 	// fill table data
-
 	const studentTableBodyElement = document.querySelector('#studentTableBody');
 
 	//fill the table with "-" if no data show
-	if (!studentTableData) {
-		tableBodyPackageDetailElement.innerHTML = `
+	if (studentTableData.length == 0) {
+		studentTableBodyElement.innerHTML = `
 			<tr>
-				<td>-</td>
-				<td>-</td>
-				<td>-</td>
-				<td>-</td>
-				<td>-</td>
-				<td>-</td>
-				<td>-</td>
+				<td colspan='7'>No Data to Show</td>
 			</tr>
 		`;
 	}
 
-	studentTableData.forEach((data,index) => {
-		const tr = document.createElement('tr');
-		const td1 = document.createElement('td');
-		const td2 = document.createElement('td');
-		const td3 = document.createElement('td');
-		const td4 = document.createElement('td');
-		const td5 = document.createElement('td');
-		const td6 = document.createElement('td');
-		const td7 = document.createElement('td');
-
-		td1.innerText = index+1;
-		td2.innerText = data.fullname;
-		td3.innerText = data.contact;
-
-		let categoryVals = '';
-		data.packages.forEach((val, index) => {
-			categoryVals += `${val.name}${data.packages.length != index + 1 ? ' / ' : ''}`;
+	// define function for show packageNames
+	const getPackageName = (dataOb) => {
+		let name = '';
+		let packagesArr = dataOb.packages;
+		packagesArr.forEach((val, index) => {
+			// after last package name not show "|"
+			name +=
+				packagesArr.length == index + 1 ? `${val.name}` : `${val.name} | `;
 		});
-		td4.innerText = categoryVals;
+		return name;
+	};
 
-		
-		td5.innerHTML = data.trialDateSet
-			? `<i class='fa-solid fa-check text-success'></i>`
-			: `<i class='fa-solid fa-times text-danger'></i>`;
-		td6.innerText = data.status
-		td7.innerHTML = window.modifyColButtonsHtml;
+	// define function for show trial dates
+	const getTrialDate = (dataOb) => {
+		return dataOb.trialDateSet.date ? dataOb.trialDateSet.date : '-';
+	};
 
-		tr.appendChild(td1);
-		tr.appendChild(td2);
-		tr.appendChild(td3);
-		tr.appendChild(td4);
-		tr.appendChild(td5);
-		tr.appendChild(td6);
-		tr.appendChild(td7);
+	// define function for show bootstrap badge for active and inactive
+	const getStatusData = (dataOb) => {
+		return `<div class='badge text-black fw-normal ${dataOb.status == 'Active' ? 'bg-success-subtle' : 'bg-secondary-subtle'}'><i class='fa-solid fa-circle shadow-sm  ${dataOb.status == 'Active' ? 'text-success' : 'text-secondary'}' style='font-size:6px; vertical-align: middle'></i> ${dataOb.status}</div>`;
+	};
 
-		studentTableBodyElement.appendChild(tr);
-	});
-};;
+	// displayPropertyList use to define table data, datatypes
+	const displayPropertyList = [
+		{ dataType: String, propertyName: 'fullname' },
+		{ dataType: String, propertyName: 'contact' },
+		{ dataType: 'function', propertyName: getPackageName },
+		{ dataType: 'function', propertyName: getTrialDate },
+		{ dataType: 'function', propertyName: getStatusData },
+	];
+
+	// define delete table record function
+	const deleteRecord = (dataOb) => {
+		console.log(dataOb);
+	};
+
+	// define delete table record function
+	const refillDataToModal = (dataOb) => {
+		console.log(dataOb);
+	};
+
+	// define delete table record function
+	const viewTableRecordData = (dataOb) => {
+		console.log(dataOb);
+	};
+
+	// define table modify buttons name and color
+	const studentTableModifyButtons = [
+		{ name: 'Edit', color: 'secondary' },
+		{ name: 'View', color: 'info' },
+		{ name: 'Delete', color: 'danger' },
+	];
+
+	// call fillDataIntoTable() common.js function to fill the table
+	fillDataIntoTable(
+		studentTableBodyElement,
+		studentTableData,
+		displayPropertyList,
+		true,
+		studentTableModifyButtons,
+		deleteRecord,
+		refillDataToModal,
+		viewTableRecordData,
+	);
+};
 
 // document.addEventListener('DOMContentLoaded', () => {
 // 	const catBike = document.getElementById('catBike');
