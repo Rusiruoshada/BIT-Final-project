@@ -1,12 +1,12 @@
 <div class="container-fluid">
 	<div class="card border-0 shadow">
 		<div class="p-4">
-			<div class="d-flex justify-content-between align-items-center mb-4">
+			<div class="d-flex mb-4 justify-content-between align-items-center">
 				<div>
 					<!-- search bar  -->
 					<div class="position-relative searchBarFroTable">
 						<span class="position-absolute searchIcon">
-							<i class="fa-solid fa-search text-secondary"></i>
+							<i class="text-secondary fa-solid fa-search"></i>
 						</span>
 						<input
 							type="text"
@@ -98,14 +98,16 @@
 
 			<!--package  table goes here -->
 
-			<div class="card-body p-0">
+			<div class="p-0 card-body">
 				<div class="table-responsive">
 					<table
 						class="table table-hover text-center align-middle bg-transparent"
 					>
 						<thead>
 							<tr>
-								
+								<th scope="col" class="text-center align-middle">
+									#
+								</th>
 								<th scope="col" class="text-center align-middle">
 									Package Name
 								</th>
@@ -129,9 +131,9 @@
 
             <!-- card footer pagination and entries -->
 
-			<div class="d-flex justify-content-between align-items-center mt-4">
+			<div class="d-flex mt-4 justify-content-between align-items-center">
 				<div class="form-text">Showing 1 to 9 of 9 entries</div>
-				<div class="btn-group gap-2">
+				<div class="gap-2 btn-group">
 					<nav aria-label="table navigation">
 						<ul class="pagination text-primary">
 							<li class="page-item">
