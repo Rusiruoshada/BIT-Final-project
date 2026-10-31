@@ -1,14 +1,14 @@
 <div class="container-fluid">
 	<div class="card border-0 shadow">
 		<div class="p-4">
-			<div class="d-flex justify-content-between align-items-center mb-4">
+			<div class="d-flex mb-4 justify-content-between align-items-center">
 				<div>
 					<!-- search bar  -->
 					<div class="position-relative searchBarFroTable">
 						<span
 							class="position-absolute searchIcon"
 						>
-							<i class="fa-solid fa-search text-secondary"></i>
+							<i class="text-secondary fa-solid fa-search"></i>
 						</span>
 						<input
 							type="text"
@@ -23,7 +23,7 @@
 				<button
 					type="button"
 					class="btn btn-primary"
-					id="new-student-button"
+					id="newStudentButton"
 					data-bs-toggle="modal"
 					data-bs-target="#employeeDetailForm"
 				>
@@ -62,21 +62,21 @@
 								<!-- not give user to just type fake data and submit  -->
 								<div class="row">
 									<div class="col-12 d-flex justify-content-center">
-										<button type="button" class="position-relative btn">
+										<button type="button" class="btn position-relative">
 											<div
-												class="border-2 rounded-pill border-primary d-flex align-items-center"
+												class="d-flex border-2 rounded-pill border-primary align-items-center"
 												style="height: 60px; width: 60px"
 												data-bs-toggle="tooltip"
 												data-bs-title="Upload a Profile Picture"
 											>
 												<i
-													class="fa-solid fa-image text-primary"
+													class="text-primary fa-solid fa-image"
 													style="font-size: 34px"
 												></i>
 											</div>
 
 											<i
-												class="fa-solid fa-camera text-primary fw-bold position-absolute bottom-0"
+												class="text-primary fw-bold position-absolute bottom-0 fa-solid fa-camera"
 											></i>
 										</button>
 									</div>
@@ -86,7 +86,7 @@
 								<div class="row">
 									<div class="col-12">
 										<p class="fw-bold h5">Personal Information :</p>
-										<div class="form-text mt-0 mb-3">
+										<div class="mt-0 mb-3 form-text">
 											Fields with <span class="text-danger">"*"</span> must be
 											filled out.
 										</div>
@@ -630,7 +630,7 @@
 			<!-- vehicle category and package selection modal -->
 
 			<!-- student detail table -->
-			<div class="card-body p-0">
+			<div class="p-0 card-body">
 				<div class="table-responsive">
 					<table
 						class="table table-hover text-center align-middle bg-transparent"
@@ -657,9 +657,9 @@
 						</tbody>
 					</table>
 				</div>
-				<div class="d-flex justify-content-between align-items-center mt-4">
+				<div class="d-flex mt-4 justify-content-between align-items-center">
 					<div class="form-text">Showing 1 to 9 of 9 entries</div>
-					<div class="btn-group gap-2">
+					<div class="gap-2 btn-group">
 						<nav aria-label="table navigation">
 							<ul class="pagination text-primary">
 								<li class="page-item">
