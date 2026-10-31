@@ -12,18 +12,25 @@ window.loadPage = async (page) => {
 
 		const html = await response.text();
 		appContent.innerHTML = html;
-		
+
 		// set page title to loading page name
 		const pageTitle = document.querySelector('#navbarPageTitle');
-		pageTitle ? pageTitle.innerText = page.replaceAll('-',' & ').toUpperCase() : '';
+		pageTitle
+			? (pageTitle.innerText = page.replaceAll('-', ' & ').toUpperCase())
+			: '';
 
 		// load the js page if its exits
-		const pageWithScript = ['notification','students','packages','role-permission']; // use this array to define what js pages there show network 404 page fail error not show on the console
+		const pageWithScript = [
+			'notification',
+			'students',
+			'packages',
+			'role-permission',
+			'staff',
+			'payment'
+		]; // use this array to define what js pages there show network 404 page fail error not show on the console
 
 		if (pageWithScript.includes(page)) {
-			
 			try {
-				
 				// then import and append the script again
 				// this will dynamically import the module
 				const jsPage = await import(`../js/pages/${page}.js`);
@@ -33,15 +40,10 @@ window.loadPage = async (page) => {
 				if (jsPage && typeof jsPage.init === 'function') {
 					jsPage.init();
 				}
-
 			} catch (error) {
-				console.warn(`failed to load script for page: ${page}`,error)
+				console.warn(`failed to load script for page: ${page}`, error);
 			}
-
-
-			
 		}
-
 	} catch (error) {
 		console.error(error);
 
@@ -53,13 +55,12 @@ window.loadPage = async (page) => {
 	}
 };
 
-
-loadPage('role-permission')
+loadPage('payment');
 
 window.setModal = async (modals, appendElement) => {
 	try {
 		const response = await fetch(`components/${modals}.html`);
-		
+
 		// Check if the file actually exists / loaded successfully
 		if (!response.ok) {
 			throw new Error(
@@ -69,7 +70,6 @@ window.setModal = async (modals, appendElement) => {
 
 		const html = await response.text();
 		appendElement.innerHTML = html;
-		
 	} catch (error) {
 		console.error('Error loading modal:', error);
 		// Optional fallback message so the user isn't left looking at a broken state
