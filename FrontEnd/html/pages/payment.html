@@ -1,0 +1,301 @@
+<div class="container-fluid">
+	<div class="card border-0 shadow">
+		<div class="p-4">
+			<div class="d-flex mb-4 justify-content-between align-items-center">
+				<div>
+					<!-- search bar  -->
+					<div class="position-relative searchBarFroTable">
+						<span class="position-absolute searchIcon">
+							<i class="text-secondary fa-solid fa-search"></i>
+						</span>
+						<input
+							type="text"
+							name="searchInput"
+							id="searchInput"
+							class="form-control shadow-none searchInput"
+							placeholder="Search here..."
+						/>
+					</div>
+				</div>
+				<div class="d-flex gap-2">
+					<button
+						type="button"
+						class="btn btn-primary"
+						id="addPaymentModalOpenButton"
+						data-bs-toggle="modal"
+						data-bs-target="#addPaymentModal"
+					>
+						<i class="fa-solid fa-plus"></i>
+						Make a Payment
+					</button>
+				</div>
+			</div>
+
+			<!-- add new payment modal goes here -->
+
+			<div
+				class="modal fade"
+				id="addPaymentModal"
+				aria-hidden="true"
+				data-bs-backdrop="static"
+				data-bs-keyboard="false"
+				aria-labelledby="paymentModalLabel"
+				tabindex="-1"
+			>
+				<div
+					class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-lg modal-fullscreen-sm-down"
+				>
+					<div class="modal-content">
+						<div class="modal-header">
+							<h4 class="modal-title fs-5" id="paymentModalLabel">
+								Add Payment
+							</h4>
+							<button
+								type="button"
+								class="btn-close"
+								id="paymentModalCloseButton"
+								data-bs-dismiss="modal"
+								aria-label="Close"
+							></button>
+						</div>
+						<div class="modal-body">
+							<div id="paymentModalForm">
+								<form action="#" onsubmit="return false;">
+	<div class="row">
+		<div class="col-12">
+			<div class="mt-0 mb-3 form-text">
+				Fields with <span class="text-danger">"*"</span> must be filled out.
+			</div>
+		</div>
+
+		<!-- Enrolled student name select -->
+
+		<div class="col-12 mb-3 mb-sm-3">
+			<div class="row g-3">
+
+				<div class="col-md-12 col-lg-12 mb-3 mb-sm-3 mb-lg-4">
+					<label
+						for="selectEnrolledStudent"
+						class="form-label rounded fw-bold"
+						data-bs-toggle="tooltip"
+						data-bs-placement="top"
+						title="required"
+						aria-hidden="true"
+						>Enrolled Student <span class="text-danger">*</span></label
+					>
+					<select
+						name="selectEnrolledStudent"
+						id="selectEnrolledStudent"
+						class="form-select"
+						required
+					>
+						<!-- categories will show here using js -->
+					</select>
+					<div class="valid-feedback">Valid Value...!</div>
+					<div class="invalid-feedback">Invalid Category Name, Try Again!</div>
+				</div>
+			</div>
+		</div>
+
+		<!--Enrolled student name select-->
+
+		<!-- PayableAmount , DueAmount -->
+
+		<div class="col-12 mb-3 mb-sm-3" id="payableAmountAndDueAmountInput">
+			<div class="row g-3">
+				<div class="col-6 col-md-6 col-lg-6 mb-3 mb-sm-3 mb-lg-4">
+					<label
+						for="inputPayableAmount"
+						class="form-label rounded fw-bold"
+						data-bs-toggle="tooltip"
+						data-bs-placement="top"
+						title="Payable Amount"
+						aria-hidden="true"
+						>Payable Amount </label
+					>
+					<input
+						type="text"
+						name="inputPayableAmount"
+						id="inputPayableAmount"
+						class="form-control"
+						placeholder="Rs 0.00"
+						value=""
+						disabled
+					/>
+				</div>
+
+                <div class="col-6 col-md-6 col-lg-6 mb-3 mb-sm-3 mb-lg-4">
+					<label
+						for="inputDueAmount"
+						class="form-label rounded fw-bold"
+						data-bs-toggle="tooltip"
+						data-bs-placement="top"
+						title="Due Amount"
+						aria-hidden="true"
+						>Due Amount </label
+					>
+					<input
+						type="text"
+						name="inputDueAmount"
+						id="inputDueAmount"
+						class="form-control"
+						placeholder="Rs.0.00"
+						disabled
+                        min="0"
+					/>
+					
+				</div>
+			</div>
+		</div>
+
+		<!-- PayableAmount , DueAmount -->
+
+        <!-- Amount -->
+
+        <div class="col-12 mb-3 mb-sm-3">
+			<div class="row g-3">
+                <div class="col-12 mb-3 mb-sm-3 mb-lg-4">
+					<label
+						for="selectPackageStatus"
+						class="form-label rounded fw-bold"
+						data-bs-toggle="tooltip"
+						data-bs-placement="top"
+						title="required"
+						aria-hidden="true"
+						>Amount <span class="text-danger">*</span></label
+					>
+					<input
+						type="text"
+						name="inputAmount"
+						id="inputAmount"
+						class="form-control"
+						placeholder="Rs 0.00"
+						value=""
+						required
+					/>
+					<div class="valid-feedback">Valid Value...!</div>
+					<div class="invalid-feedback">Invalid Amount, Try Again!</div>
+				</div>
+            </div>
+		</div>
+
+        <!-- Amount -->
+
+		<!-- Note -->
+
+		<div class="col-12">
+			<label
+				for="inputNote"
+				class="form-label rounded fw-bold"
+				data-bs-toggle="tooltip"
+				data-bs-placement="top"
+				title="required"
+				aria-hidden="true"
+				>Note <span class="text-danger">*</span></label
+			>
+			<textarea
+				type="text"
+				class="form-control"
+				id="inputNote"
+				name="inputNote"
+				placeholder="Write Note..."
+				required
+			></textarea>
+			<div class="valid-feedback">Valid Value...!</div>
+			<div class="invalid-feedback">Invalid Note, Try Again!</div>
+		</div>
+
+		<!-- Note -->
+	</div>
+</form>
+
+							</div>
+						</div>
+						<div class="modal-footer">
+							<button
+								type="button"
+								class="btn btn-outline-secondary"
+								data-bs-dismiss="modal"
+								id="paymentModalBackButton"
+							>
+								Back
+							</button>
+							<button
+								type="button"
+								class="btn btn-primary"
+								id="paymentModalSaveButton"
+							>
+								Save
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- add new payment modal goes here -->
+
+			<!-- payment table goes here -->
+
+			<div class="p-0 card-body">
+				<div class="table-responsive">
+					<table
+						class="table table-hover text-center align-middle bg-transparent"
+					>
+						<thead>
+							<tr>
+								<th scope="col" class="text-center align-middle">#</th>
+								<th scope="col" class="text-center align-middle">Payment Id</th>
+								<th scope="col" class="text-center align-middle">
+									Student Name
+								</th>
+								<th scope="col" class="text-center align-middle">
+									Payable Amount
+								</th>
+								<th scope="col" class="text-center align-middle">
+									Paid Amount
+								</th>
+								<th scope="col" class="text-center align-middle">Due Amount</th>
+								<th scope="col" class="text-center align-middle">Status</th>
+								<th scope="col" class="text-center align-middle">Modify</th>
+							</tr>
+						</thead>
+						<tbody id="paymentDetailTableBody">
+							<!-- data will fill using js -->
+						</tbody>
+					</table>
+				</div>
+			</div>
+
+			<!-- payment table goes here -->
+
+			<!-- card footer pagination and entries -->
+
+			<div class="d-flex mt-4 justify-content-between align-items-center">
+				<div class="form-text">Showing 1 to 9 of 9 entries</div>
+				<div class="gap-2 btn-group">
+					<nav aria-label="table navigation">
+						<ul class="pagination text-primary">
+							<li class="page-item">
+								<a class="page-link" href="#" aria-label="Previous">
+									<span aria-hidden="true">&laquo;</span>
+								</a>
+							</li>
+							<li class="page-item">
+								<a class="page-link active" href="#">1</a>
+							</li>
+							<li class="page-item"><a class="page-link" href="#">2</a></li>
+							<li class="page-item"><a class="page-link" href="#">3</a></li>
+							<li class="page-item">
+								<a class="page-link" href="#" aria-label="Next">
+									<span aria-hidden="true">&raquo;</span>
+								</a>
+							</li>
+						</ul>
+					</nav>
+				</div>
+			</div>
+
+			<!-- card footer pagination and entries -->
+		</div>
+	</div>
+</div>
