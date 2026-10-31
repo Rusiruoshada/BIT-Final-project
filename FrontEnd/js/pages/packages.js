@@ -62,45 +62,68 @@ export const init = () => {
 	if (!tableData) {
 		tableBodyPackageDetailElement.innerHTML = `
 			<tr>
-				<td>-</td>
-				<td>-</td>
-				<td>-</td>
-				<td>-</td>
-				<td>-</td>
-				<td>-</td>
+				<td colspan='6'>No Data to Show</td>
 			</tr>
 		`;
 	}
 
-	tableData.forEach((data) => {
-		const tr = document.createElement('tr');
-		const td1 = document.createElement('td');
-		const td2 = document.createElement('td');
-		const td3 = document.createElement('td');
-		const td4 = document.createElement('td');
-		const td5 = document.createElement('td');
-		const td6 = document.createElement('td');
-
-		td1.innerText = data.packageName;
-
-		let categoryVals = '';
-		data.categoryName.forEach((val,index) => {
-			categoryVals += `${val.name}${data.categoryName.length != index+1?' / ':''}`;
+	// define function for show categoryNames
+	const getCategoryName = (dataOb) => {
+		let name = '';
+		let categoryNameArr = dataOb.categoryName;
+		categoryNameArr.forEach((val, index) => {
+			// after last package name not show "|"
+			name +=
+				categoryNameArr.length == index + 1 ? `${val.name}` : `${val.name} | `;
 		});
-		td2.innerText = categoryVals;
+		return name;
+	};
+	
+	// define function for show bootstrap badge for active and inactive
+	const getStatusData = (dataOb) => {
+		return `<div class='badge text-black fw-normal ${dataOb.status == 'Active' ? 'bg-success-subtle' : 'bg-secondary-subtle'}'><i class='fa-solid fa-circle shadow-sm  ${dataOb.status == 'Active' ? 'text-success' : 'text-secondary'}' style='font-size:6px; vertical-align: middle'></i> ${dataOb.status}</div>`;
+	};
 
-		td3.innerText = data.packageCost;
-		td4.innerText = data.lessonCount;
-		td5.innerText = data.status;
-		td6.innerHTML = window.modifyColButtonsHtml;
+	// displayPropertyList use to define table data, datatypes
+	const displayPropertyList = [
+		{ dataType: String, propertyName: 'packageName' },
+		{ dataType: 'function', propertyName: getCategoryName },
+		{ dataType: String, propertyName: 'packageCost' },
+		{ dataType: String, propertyName: 'lessonCount' },
+		{ dataType: 'function', propertyName: getStatusData },
+	];
 
-		tr.appendChild(td1);
-		tr.appendChild(td2);
-		tr.appendChild(td3);
-		tr.appendChild(td4);
-		tr.appendChild(td5);
-		tr.appendChild(td6);
+	// define delete table record function
+	const deleteRecord = (dataOb) => {
+		console.log(dataOb);
+	};
 
-		tableBodyPackageDetailElement.appendChild(tr);
-	});
-};
+	// define delete table record function
+	const refillDataToModal = (dataOb) => {
+		console.log(dataOb);
+	};
+
+	// define delete table record function
+	const viewTableRecordData = (dataOb) => {
+		console.log(dataOb);
+	};
+
+	// define table modify buttons name and color
+	const studentTableModifyButtons = [
+		{ name: 'Edit', color: 'secondary' },
+		{ name: 'View', color: 'info' },
+		{ name: 'Delete', color: 'danger' },
+	];
+
+	// call fillDataIntoTable() common.js function to fill the table
+	fillDataIntoTable(
+		tableBodyPackageDetailElement,
+		tableData,
+		displayPropertyList,
+		true,
+		studentTableModifyButtons,
+		deleteRecord,
+		refillDataToModal,
+		viewTableRecordData,
+	);
+};;
