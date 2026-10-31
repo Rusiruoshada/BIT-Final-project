@@ -64,7 +64,10 @@ const sidebarNavigationItems = [
 	{ itemName: 'Dashboard', itemIcon: 'fa-gauge-high' },
 	{ itemName: 'Staff', itemIcon: 'fa-user-group' },
 	{ itemName: 'Role & Permission', itemIcon: 'fa-shield-halved' },
+	{ itemName: 'Enrollment', itemIcon: 'fa-file-pen' },
+	{ itemName: 'Payment', itemIcon: 'fa-credit-card' },
 	{ itemName: 'Packages', itemIcon: 'fa-layer-group' },
+	{ itemName: 'Category', itemIcon: 'fa-list' },
 	{ itemName: 'Students', itemIcon: 'fa-users' },
 	{ itemName: 'Instructors', itemIcon: 'fa-taxi' },
 	{ itemName: 'Reports & Summary', itemIcon: 'fa-chart-simple' },
@@ -266,7 +269,7 @@ window.fixAriaHiddenModalIssus = (modalName = '') => {
 // ================================================================================
 
 // ================================================================================
-// global notification modal handler 
+// global notification modal handler
 // ================================================================================
 
 window.openNotificationModal = (notificationId) => {
@@ -323,54 +326,156 @@ window.openNotificationModal = (notificationId) => {
 fixAriaHiddenModalIssus('notificationModal');
 
 // ================================================================================
-// global notification modal handler 
+// global notification modal handler
 // ================================================================================
 
 
 // ================================================================================
-// Table Modification buttons group
+// Table Data fill common function
+// ================================================================================
+
+const fillDataIntoTable = (
+	targetTableElement,
+	dataList,
+	displayPropertyList,
+	buttonVisibility = true,
+	buttonArray,
+	deleteFunction,
+	refillDataToModal,
+	viewData,
+) => {
+	if (!dataList || dataList.length == 0) {
+		targetTableElement.innerHTML = `<tr><td colspan="${displayPropertyList.length + 2}">No Data to Show</td></tr>`;
+		return;
+	}
+	dataList.forEach((dataOb, dataIndex) => {
+		let tr = document.createElement('tr');
+
+		//table index
+		let tdIndex = document.createElement('td');
+		tdIndex.innerText = dataIndex + 1;
+		tr.appendChild(tdIndex);
+
+		// add data to table
+		displayPropertyList.forEach((propertyDataOb, propertyIndex) => {
+			let tdProperty = document.createElement('td');
+
+			// string data can show easily because we know what we get => string
+			if (propertyDataOb.dataType === String) {
+				tdProperty.innerText = dataOb[propertyDataOb.propertyName];
+			}
+
+			// but for function type we don't know what we get for every time
+			if (propertyDataOb.dataType == 'function') {
+				// this will call back to the propertyName function store
+				tdProperty.innerHTML = propertyDataOb.propertyName(dataOb);
+			}
+
+			tr.appendChild(tdProperty);
+		});
+
+		// show buttons if true
+		if (buttonVisibility) {
+			// td for each row
+			let tdModifyCol = document.createElement('td');
+
+			let div = document.createElement('div');
+			div.className = 'dropdown';
+
+			let buttonList = '';
+			buttonArray.forEach((buttonObj) => {
+				buttonList += `<li><button id='${String(buttonObj.name).toLowerCase()}Button${dataIndex + 1}row' class='fw-bold btn btn-sm btn-outline-${buttonObj.color}'>${buttonObj.name}</button></li>\n
+                `;
+			});
+
+			div.insertAdjacentHTML(
+				'beforeend',
+				`
+					<button class='btn btn-sm btn-transparent text-black' type='button' data-bs-toggle='dropdown'  aria-expanded="false">
+					<i class='fa-solid fa-gear'></i>
+					</button>
+					<ul class='dropdown-menu' style='padding:5px'>
+						<div class='btn-group' role='group'>
+						${buttonList}
+						</div>
+					</ul>
+            		`,
+			);
+
+			// Attach event listeners to each button in this specific row
+			buttonArray.forEach((buttonObj) => {
+				let buttonId = `${String(buttonObj.name).toLowerCase()}Button${dataIndex + 1}row`;
+				let btnElement = div.querySelector(`#${buttonId}`);
+
+				if (btnElement) {
+					btnElement.addEventListener('click', () => {
+						// Handle Delete button click
+						if (
+							buttonObj.name === 'Delete' &&
+							typeof deleteFunction === 'function'
+						) {
+							deleteFunction(dataOb);
+						}
+
+						// handle Edit button
+						if (buttonObj.name === 'Edit') {
+							refillDataToModal(dataOb);
+						}
+
+						// handle view button
+						if (buttonObj.name === 'View') {
+							viewData(dataOb);
+						}
+					});
+				}
+			});
+
+			// add div.dropdown to the td
+			tdModifyCol.appendChild(div);
+			// td add to the tr each row
+			tr.appendChild(tdModifyCol);
+		}
+		// show buttons if true
+
+		targetTableElement.appendChild(tr);
+	});
+};
+
+// ================================================================================
+// Table Data fill common function
 // ================================================================================
 
 
-window.modifyColButtonsHtml = `
-	<div class="dropdown dropstart">
-		<a
-			href="#"
-			class="btn btn-sm"
-			role="button"
-			data-bs-toggle="dropdown"
-			aria-expanded="false"
-		>
-			<i class="fa-solid fa-gear text-black"></i>
-		</a>
-		<div class="dropdown-menu p-2">
-			<div class="btn-group">
-				<button
-					type="button"
-					class="btn btn-outline-info fw-medium btn-sm"
-					id="tableModificationViewButton"
-				>
-					View
-				</button>
-				<button
-					type="button"
-					class="btn btn-outline-warning fw-medium btn-sm"
-					id="tableModificationUpdateButton"
-				>
-					Update
-				</button>
-				<button
-					type="button"
-					class="btn btn-outline-danger fw-medium btn-sm"
-					id="tableModificationDeleteButton"
-				>
-					Delete
-				</button>
-			</div>
-		</div>
-	</div>
-`;
+// ================================================================================
+// fill select tag options common function
+// ================================================================================
+
+const fillDataIntoSelectElement = (
+	elementIdName,
+	dataList,
+	message,
+	property,
+) => {
+	const element = document.querySelector(`#${elementIdName}`);
+	element.innerHTML = '';
+	// this is for default select text in select
+	if (message != '') {
+		const option = document.createElement('option');
+		option.value = '';
+		option.selected = true;
+		option.disabled = true;
+		option.innerText = message;
+		element.appendChild(option);
+	}
+
+	dataList.forEach((data) => {
+		const option = document.createElement('option');
+		option.value = JSON.stringify(data);
+		option.innerText = data[property];
+		element.appendChild(option);
+	});
+};
 
 // ================================================================================
-// Table Modification buttons group
+// fill select tag options common function
 // ================================================================================
